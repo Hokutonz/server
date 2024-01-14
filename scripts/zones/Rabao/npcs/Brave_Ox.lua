@@ -13,22 +13,22 @@ end
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        75000,  77350,    -- Protect IV
-        100000,  73710,    -- Protectra IV
-        25000,  63700,    -- Dispel
-        10000,  31850,    -- Stun
-        25000,  31850,    -- Flash
-        50000, 546000,    -- Reraise III
-        25000,  78260,    -- Banish III
-        25000,  20092,    -- Cura
-        10000,  88389,    -- Cura II
-        50000,  62192,    -- Sacrifice
-        50000,  64584,    -- Esuna
-        50000,  30967,    -- Auspice
-        -- 4614, 141137,    -- Cure VI
-        125000, 103882,    -- Protect V
-        125000, 125069,    -- Shell V
-        250000, 140332,    -- Crusade
+        4654,  77350,    -- Protect IV
+        4736, 100000,    -- Protectra IV
+        4868,  63700,    -- Dispel
+        4860,  31850,    -- Stun
+        4720,  31850,    -- Flash
+        4750, 546000,    -- Reraise III
+        4638,  78260,    -- Banish III
+        4701,  25000,    -- Cura
+        5082,  88389,    -- Cura II
+        4702,  62192,    -- Sacrifice
+        4703,  64584,    -- Esuna
+        4704,  50000,    -- Auspice
+        --4614, 141137,    -- Cure VI
+        4655, 125000,    -- Protect V
+        4660, 125000,    -- Shell V
+        5103, 250000,    -- Crusade
     }
 
     player:showText(npc, ID.text.BRAVEOX_SHOP_DIALOG)
