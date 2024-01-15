@@ -37,7 +37,7 @@
 # Live example:
 
 custom/cpp/ah_announcement.cpp
-custom/cpp/ah_paginations.cpp
+custom/cpp/ah_pagination.cpp
 custom/lua/homepoint_heal.lua
 custom/lua/conquest_regional_npcs_always_up.lua
 custom/lua/chocobo_raising_qol.lua
