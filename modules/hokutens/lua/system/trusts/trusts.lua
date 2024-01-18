@@ -512,7 +512,7 @@ end)
 m:addOverride(string.format("xi.actions.spells.trust.%s.onMobSpawn", trustToReplaceName), function(mob)
     for _, member in ipairs(mob:getMaster():getParty()) do
         if member:isPC() then
-            member:PrintToPlayer("Matsui-P, Lets get this party started", 4, "Matsui-P") --4: MESSAGE_PARTY
+            member:printToPlayer("Matsui-P, Lets get this party started", 4, "Matsui-P") --4: MESSAGE_PARTY
         end 
     end
 end)
@@ -552,7 +552,7 @@ end)
 m:addOverride(string.format("xi.actions.spells.trust.%s.onMobSpawn", trustToReplaceName2), function(mob)
     for _, member in ipairs(mob:getMaster():getParty()) do
         if member:isPC() then
-            member:PrintToPlayer("Cornelia, at your service.", 4, "Cornelia") -- 4: MESSAGE_PARTY
+            member:printToPlayer("Cornelia, at your service.", 4, "Cornelia") -- 4: MESSAGE_PARTY
         end
     end
 end)
@@ -564,7 +564,7 @@ m:addOverride(string.format("xi.actions.spells.trust.%s.onMobDespawn", trustToRe
     local master = GetPlayerByID(masterId)
     for _, member in ipairs(master:getParty()) do
         if member:isPC() then
-            member:PrintToPlayer("Remember: never give up!", 4, "Cornelia") -- 4: MESSAGE_PARTY
+            member:printToPlayer("Remember: never give up!", 4, "Cornelia") -- 4: MESSAGE_PARTY
         end
     end
 end)
