@@ -38,7 +38,7 @@ m:addOverride("xi.actions.spells.trust.august.onMagicCastingCheck", function(cas
             title   = "Renew your Trust Lease?",
             onStart = function(player)
                 -- NOTE: This could be used to lock the player in place
-                playerArg:PrintToPlayer("Your premium trust lease has expired.", xi.msg.channel.NS_SAY)
+                playerArg:printToPlayer("Your premium trust lease has expired.", xi.msg.channel.NS_SAY)
             end,
 
             options =
@@ -52,11 +52,11 @@ m:addOverride("xi.actions.spells.trust.august.onMagicCastingCheck", function(cas
                             player:setGil(playerGil - renewalCost)
                             player:setCharVar("[TRUST]LeaseTime", newLeaseExpiry)
 
-                            caster:PrintToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
+                            caster:printToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
 
                             return xi.msg.basic.STATUS_PREVENTS
                         else
-                            player:PrintToPlayer("You don't have enough gil to renew your lease.", xi.msg.channel.NS_SAY)
+                            player:printToPlayer("You don't have enough gil to renew your lease.", xi.msg.channel.NS_SAY)
                             return xi.msg.basic.STATUS_PREVENTS
                         end
                     end,
@@ -75,7 +75,7 @@ m:addOverride("xi.actions.spells.trust.august.onMagicCastingCheck", function(cas
     else
         local timeLeft = trustLease / 3600
 
-        caster:PrintToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
+        caster:printToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
         return xi.trust.canCast(caster, spell)
     end
 end)
@@ -211,7 +211,7 @@ m:addOverride("xi.actions.spells.trust.shantotto_ii.onMagicCastingCheck", functi
             title   = "Renew your Trust Lease?",
             onStart = function(player)
                 -- NOTE: This could be used to lock the player in place
-                playerArg:PrintToPlayer("Your premium trust lease has expired.", xi.msg.channel.NS_SAY)
+                playerArg:printToPlayer("Your premium trust lease has expired.", xi.msg.channel.NS_SAY)
             end,
 
             options =
@@ -225,11 +225,11 @@ m:addOverride("xi.actions.spells.trust.shantotto_ii.onMagicCastingCheck", functi
                             player:setGil(playerGil - renewalCost)
                             player:setCharVar("[TRUST]LeaseTime", newLeaseExpiry)
 
-                            caster:PrintToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
+                            caster:printToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
 
                             return xi.msg.basic.STATUS_PREVENTS
                         else
-                            player:PrintToPlayer("You don't have enough gil to renew your lease.", xi.msg.channel.NS_SAY)
+                            player:printToPlayer("You don't have enough gil to renew your lease.", xi.msg.channel.NS_SAY)
                             return xi.msg.basic.STATUS_PREVENTS
                         end
                     end,
@@ -248,7 +248,7 @@ m:addOverride("xi.actions.spells.trust.shantotto_ii.onMagicCastingCheck", functi
     else
         local timeLeft = trustLease / 3600
 
-        caster:PrintToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
+        caster:printToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
         return xi.trust.canCast(caster, spell)
     end
 end)
@@ -286,7 +286,7 @@ m:addOverride("xi.actions.spells.trust.ygnas.onMagicCastingCheck", function(cast
             title   = "Renew your Trust Lease?",
             onStart = function(player)
                 -- NOTE: This could be used to lock the player in place
-                playerArg:PrintToPlayer("Your premium trust lease has expired.", xi.msg.channel.NS_SAY)
+                playerArg:printToPlayer("Your premium trust lease has expired.", xi.msg.channel.NS_SAY)
             end,
 
             options =
@@ -300,11 +300,11 @@ m:addOverride("xi.actions.spells.trust.ygnas.onMagicCastingCheck", function(cast
                             player:setGil(playerGil - renewalCost)
                             player:setCharVar("[TRUST]LeaseTime", newLeaseExpiry)
 
-                            caster:PrintToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
+                            caster:printToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
 
                             return xi.msg.basic.STATUS_PREVENTS
                         else
-                            player:PrintToPlayer("You don't have enough gil to renew your lease.", xi.msg.channel.NS_SAY)
+                            player:printToPlayer("You don't have enough gil to renew your lease.", xi.msg.channel.NS_SAY)
                             return xi.msg.basic.STATUS_PREVENTS
                         end
                     end,
@@ -323,7 +323,7 @@ m:addOverride("xi.actions.spells.trust.ygnas.onMagicCastingCheck", function(cast
     else
         local timeLeft = trustLease / 3600
 
-        caster:PrintToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
+        caster:printToPlayer(string.format("Your lease will expire in %s days, %s hours, %s minutes and %s seconds.", daysLeft, hoursLeft, minutesLeft, time), xi.msg.channel.NS_SAY)
         return xi.trust.canCast(caster, spell)
     end
 end)
