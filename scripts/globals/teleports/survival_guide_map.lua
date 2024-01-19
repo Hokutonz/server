@@ -1072,14 +1072,14 @@ survival.survivalGuides =
     },
     [97] =
     {
-        zoneId = xi.zone.EASTERN_ADOULIN,
+        zoneId = xi.zone.LEAFALLIA,
         group = 4,
         groupMask = 2^1,
         groupIndex = 2,
-        posX = -53.5,
-        posY = 0.15,
-        posZ = -116.93,
-        posRot = 64
+        posX = 2.77,
+        posY = -0.18,
+        posZ = 5.54,
+        posRot = 1
     }
 }
 
@@ -1182,7 +1182,7 @@ survival.zoneIdToGuideIdMap =
     [xi.zone.GARLAIGE_CITADEL_S] = 94,
     [xi.zone.BEAUCEDINE_GLACIER_S] = 95,
     [xi.zone.CASTLE_ZVAHL_BAILEYS_S] = 96,
-    [xi.zone.EASTERN_ADOULIN] = 97
+    [xi.zone.LEAFALLIA] = 97
 }
 
 return survival

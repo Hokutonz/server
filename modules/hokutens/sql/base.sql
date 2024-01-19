@@ -1,8 +1,9 @@
 # Kill zoneline for Server Base
 DELETE FROM `xidb`.`zonelines` WHERE  `zoneline`=812922746;
 
-# Set zone type to 1 for Mog House access
+# Set zone settings for Mog House access
 UPDATE `xidb`.`zone_settings` SET `zonetype`='1' WHERE  `zoneid`=281;
+UPDATE `xidb`.`zone_settings` SET `misc`='5704' WHERE  `zoneid`=281;
 
 # Remove all original NPCs
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928208;
