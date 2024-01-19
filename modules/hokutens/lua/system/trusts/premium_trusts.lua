@@ -253,8 +253,8 @@ m:addOverride("xi.actions.spells.trust.shantotto_ii.onMagicCastingCheck", functi
     end
 end)
 
-m:addOverride("xi.actions.spells.trust.shantotto_ii.onSpellCast", function(caster, target, spell)
-end)
+--m:addOverride("xi.actions.spells.trust.shantotto_ii.onSpellCast", function(caster, target, spell)
+--end)
 
 ------------------------------------
 -- TRUST: Ygnas                   --
@@ -328,7 +328,7 @@ m:addOverride("xi.actions.spells.trust.ygnas.onMagicCastingCheck", function(cast
     end
 end)
 
-m:addOverride("xi.actions.spells.trust.ygnas.onSpellCast", function(caster, target, spell)
-end)
+--m:addOverride("xi.actions.spells.trust.ygnas.onSpellCast", function(caster, target, spell)
+--end)
 
 return m
