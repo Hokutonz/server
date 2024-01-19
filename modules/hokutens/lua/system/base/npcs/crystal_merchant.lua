@@ -29,7 +29,7 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
     local crystalmerchant = zone:insertDynamicEntity({
 
         objtype = xi.objType.NPC,
-        name = "Crystal Merchant",
+        name = "Crystal Shop",
         look = 738,
         x = -7.8645,
         y = -0.3029,
