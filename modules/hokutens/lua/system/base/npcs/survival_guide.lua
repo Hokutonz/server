@@ -4,6 +4,7 @@
 require("modules/module_utils")
 require("scripts/globals/npc_util")
 require("scripts/globals/utils")
+require('scripts/globals/teleports')
 require("scripts/globals/missions")
 require("modules/module_utils")
 require("scripts/zones/Leafallia/Zone")

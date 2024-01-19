@@ -29,7 +29,6 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
         end,
 
         onTrigger = function(player, npc)
-            player:showText(npc, ID.text.NOMAD_MOOGLE_DIALOG)
             player:sendMenu(1)
         end,
 
