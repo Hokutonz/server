@@ -5,7 +5,7 @@
 -----------------------------------
 -- Bonus: +200%
 -- Duration: 720 min
--- Max bonus: 100000 exp
+-- Max bonus: 75000 exp
 -----------------------------------
 require("modules/module_utils")
 --------------------------------------------
@@ -24,7 +24,7 @@ m:addOverride("xi.items.echad_ring.onItemUse", function(target)
     local effect    = xi.effect.DEDICATION
     local power     = 200
     local duration  = 43200
-    local subpower  = 100000
+    local subpower  = 75000
 
     xi.itemUtils.addItemExpEffect(target, effect, power, duration, subpower)
 end)
