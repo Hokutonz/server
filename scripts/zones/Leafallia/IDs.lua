@@ -25,6 +25,7 @@ zones[xi.zone.LEAFALLIA] =
         MEMBERS_LEVELS_ARE_RESTRICTED = 7023, -- Your party is unable to participate because certain members' levels are restricted.
         CONQUEST_BASE                 = 7197, -- Tallying conquest results...
         RINGS_TOO_NUMEROUS            = 7407, -- The rings on this stump are too numerous to count.
+        COMMON_SENSE_SURVIVAL         = 13093, -- It appears that you have arrived at a new survival guide provided by the Adventurers' Mutual Aid Network. Common sense dictates that you should now be able to teleport here from similar tomes throughout the world.
     },
     mob =
     {
