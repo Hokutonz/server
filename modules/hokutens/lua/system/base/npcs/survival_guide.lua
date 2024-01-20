@@ -26,10 +26,7 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
         rotation = 129,
         widescan = 1,
 
-        onTrade = function(player, npc, trade)
-        end,
-
-        onTrigger = function(player, npc)
+        onTrigger = function(player, targetNpc)
             xi.survivalGuide.onTrigger(player)
         end,
 
