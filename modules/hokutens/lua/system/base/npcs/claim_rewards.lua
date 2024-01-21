@@ -33,15 +33,15 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
                 player:addKeyItem(xi.ki.RHAPSODY_IN_WHITE)
                 player:messageSpecial(ID.text.KEYITEM_OBTAINED, xi.ki.RHAPSODY_IN_WHITE)
             end
-            if (player:getSkillLevel(xi.skill.FISHING) >= 1000 or
-               player:getSkillLevel(xi.skill.WOODWORKING) >= 1000 or
-               player:getSkillLevel(xi.skill.SMITHING) >= 1000 or
-               player:getSkillLevel(xi.skill.GOLDSMITHING) >= 1000 or
-               player:getSkillLevel(xi.skill.CLOTHCRAFT) >= 1000 or
-               player:getSkillLevel(xi.skill.LEATHERCRAFT) >= 1000 or
-               player:getSkillLevel(xi.skill.BONECRAFT) >= 1000 or
-               player:getSkillLevel(xi.skill.ALCHEMY) >= 1000 or
-               player:getSkillLevel(xi.skill.COOKING) >= 1000) and
+            if (player:getSkillLevel(xi.skill.FISHING) >= 3200 or
+               player:getSkillLevel(xi.skill.WOODWORKING) >= 3200 or
+               player:getSkillLevel(xi.skill.SMITHING) >= 3200 or
+               player:getSkillLevel(xi.skill.GOLDSMITHING) >= 3200 or
+               player:getSkillLevel(xi.skill.CLOTHCRAFT) >= 3200 or
+               player:getSkillLevel(xi.skill.LEATHERCRAFT) >= 3200 or
+               player:getSkillLevel(xi.skill.BONECRAFT) >= 3200 or
+               player:getSkillLevel(xi.skill.ALCHEMY) >= 3200 or
+               player:getSkillLevel(xi.skill.COOKING) >= 3200) and
                not player:hasKeyItem(xi.ki.RHAPSODY_IN_CRIMSON) then
                 player:addKeyItem(xi.ki.RHAPSODY_IN_CRIMSON)
                 player:messageSpecial(ID.text.KEYITEM_OBTAINED, xi.ki.RHAPSODY_IN_CRIMSON)
