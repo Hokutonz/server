@@ -3,7 +3,7 @@
 -----------------------------------
 require("modules/module_utils")
 require("scripts/globals/missions")
-local cu = require("modules/catseyexi/lua/additive_overrides/utils/custom_util")
+local cu = require("modules/hokutens/lua/system/utils/custom_util")
 -----------------------------------
 local m = Module:new("cop_chapter_8_fixes")
 
