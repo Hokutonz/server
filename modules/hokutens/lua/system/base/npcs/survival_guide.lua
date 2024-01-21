@@ -27,7 +27,8 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
         widescan = 1,
 
         onTrigger = function(player, targetNpc)
-            xi.survivalGuide.onTrigger(player)
+            player:printToPlayer("This is currently unavailable for use.")
+            --xi.survivalGuide.onTrigger(player)
         end,
 
         onEventUpdate = function(player, csid, option, npc)
