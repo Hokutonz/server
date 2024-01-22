@@ -39,7 +39,7 @@ local info =
             player:setCharVar("[LB]COR", 1)
             if player:getLevelCap() < 75 then
                 player:setLevelCap(75);
-                player:PrintToPlayer("Your level cap has increased to 75.", xi.msg.channel.SYSTEM_3)
+                player:printToPlayer("Your level cap has increased to 75.", xi.msg.channel.SYSTEM_3)
             end
             return true
         end,

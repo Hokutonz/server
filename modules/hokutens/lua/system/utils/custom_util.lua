@@ -80,7 +80,7 @@ local processLine = function(player, prefix, row, param)
         str = string.format(row, param[1], param[2], param[3], param[4])
     end
 
-    player:PrintToPlayer(prefix .. str, xi.msg.channel.NS_SAY)
+    player:printToPlayer(prefix .. str, xi.msg.channel.NS_SAY)
 end
 
 local processString = function(player, prefix, row, delay, param)
@@ -93,12 +93,12 @@ local processString = function(player, prefix, row, delay, param)
     if str:sub(1, 1) == " " then
         -- Paragraph continue
         player:timer(delay, function(playerArg)
-            playerArg:PrintToPlayer(str, xi.msg.channel.NS_SAY)
+            playerArg:printToPlayer(str, xi.msg.channel.NS_SAY)
         end)
     else
         -- New paragraph
         player:timer(delay, function(playerArg)
-            playerArg:PrintToPlayer(prefix .. str, xi.msg.channel.NS_SAY)
+            playerArg:printToPlayer(prefix .. str, xi.msg.channel.NS_SAY)
         end)
     end
 end
@@ -178,13 +178,13 @@ local processTable = function(player, prefix, row, delay, param)
         player:setCostume(row.costume)
 
     elseif row.message ~= nil then
-        player:PrintToPlayer(row.message, xi.msg.channel.SYSTEM_3)
+        player:printToPlayer(row.message, xi.msg.channel.SYSTEM_3)
 
     elseif row.say ~= nil then
-        player:PrintToPlayer(row.say, xi.msg.channel.NS_SAY)
+        player:printToPlayer(row.say, xi.msg.channel.NS_SAY)
 
     elseif row.emotion ~= nil then
-        player:PrintToPlayer(row.emotion, 8)
+        player:printToPlayer(row.emotion, 8)
 
     elseif row.music ~= nil then
         player:changeMusic(0, row.music)
