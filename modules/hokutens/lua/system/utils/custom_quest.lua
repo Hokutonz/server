@@ -181,11 +181,11 @@ m.music =
 }
 
 local function questAccepted(player, questName)
-    player:PrintToPlayer(string.format("\129\158 Quest Accepted: %s", questName), xi.msg.channel.SYSTEM_3)
+    player:printToPlayer(string.format("\129\158 Quest Accepted: %s", questName), xi.msg.channel.SYSTEM_3)
 end
 
 local function questCompleted(player, questName, music)
-    player:PrintToPlayer(string.format("\129\159 Quest Completed: %s", questName), xi.msg.channel.SYSTEM_3)
+    player:printToPlayer(string.format("\129\159 Quest Completed: %s", questName), xi.msg.channel.SYSTEM_3)
 
     player:changeMusic(0, 67)
     player:changeMusic(1, 67)
@@ -202,12 +202,12 @@ m.rewardTrust = function(id, name, limit)
             player:getCharVar(vars.CW_TRUST) == limit - 1
         then
             player:setCharVar(vars.CW_TRUST, limit)
-            player:PrintToPlayer(string.format("Your trust capacity has increased to %i.", limit), xi.msg.channel.SYSTEM_3)
+            player:printToPlayer(string.format("Your trust capacity has increased to %i.", limit), xi.msg.channel.SYSTEM_3)
         end
 
         if id > -1 then
             player:addSpell(id, true, true)
-            player:PrintToPlayer(string.format("You learned Trust: %s!", name), xi.msg.channel.NS_SAY)
+            player:printToPlayer(string.format("You learned Trust: %s!", name), xi.msg.channel.NS_SAY)
         end
 
         return true
@@ -227,7 +227,7 @@ m.rewardSlots = function(player, unlock)
         "\129\154  Your %s capacity has been increased by %i from %i to %i! \129\154",
         bagName, bagIncrease, oldSize, newSize)
 
-    player:PrintToPlayer(str, xi.msg.channel.SYSTEM_3)
+    player:printToPlayer(str, xi.msg.channel.SYSTEM_3)
 end
 
 m.sprinterShoes = function()
@@ -379,7 +379,7 @@ m.jobReward = function(rewards, questVar, resetStep)
             end
 
             if receivedJobRewards then
-                player:PrintToPlayer(string.format("You received the job rewards for %s!", m.jobname[job][2]))
+                player:printToPlayer(string.format("You received the job rewards for %s!", m.jobname[job][2]))
             end
         end
 
@@ -729,7 +729,7 @@ local function mobsAlive(player, entities, entityID)
 
     for k, v in pairs(result) do
         if v:isAlive() then
-            player:PrintToPlayer("An encounter is already in progress.", xi.msg.channel.SYSTEM_3)
+            player:printToPlayer("An encounter is already in progress.", xi.msg.channel.SYSTEM_3)
             return true
         end
     end
@@ -763,7 +763,7 @@ local function delaySpawn(player, npc, delay, entityTable, entities, hideSpawner
             params.partySize ~= nil and
             player:getPartySize() > params.partySize
         then
-            player:PrintToPlayer("Your party is too large to begin this encounter.", xi.msg.channel.SYSTEM_3)
+            player:printToPlayer("Your party is too large to begin this encounter.", xi.msg.channel.SYSTEM_3)
             return false
         end
 
@@ -771,7 +771,7 @@ local function delaySpawn(player, npc, delay, entityTable, entities, hideSpawner
             params.job ~= nil and
             player:getMainJob() ~= params.job
         then
-            player:PrintToPlayer("Your job is incorrect for this encounter.", xi.msg.channel.SYSTEM_3)
+            player:printToPlayer("Your job is incorrect for this encounter.", xi.msg.channel.SYSTEM_3)
             return false
         end
     end
