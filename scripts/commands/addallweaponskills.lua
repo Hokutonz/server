@@ -29,7 +29,7 @@ commandObj.onTrigger = function(player, target)
     end
 
     -- add all learned weaponskills
-    for i = 1, 49 do
+    for i = 1, 63 do
         targ:addLearnedWeaponskill(i)
     end
 
