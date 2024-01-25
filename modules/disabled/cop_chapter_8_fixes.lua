@@ -18,14 +18,14 @@ local ring =
 m:addOverride("xi.zones.AlTaieu.npcs._0x1.onTrigger", function(player, npc)
     if player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.GARDEN_OF_ANTIQUITY then
         player:setCharVar("[SEA][AlTieu]SouthTowerCS", 1)
-        player:PrintToPlayer("You may now go visit the West Tower.")
+        player:printToPlayer("You may now go visit the West Tower.")
     end
 end)
 
 m:addOverride("xi.zones.AlTaieu.npcs._0x2.onTrigger", function(player, npc)
     if player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.GARDEN_OF_ANTIQUITY then
         player:setCharVar("[SEA][AlTieu]WestTowerCS", 1)
-        player:PrintToPlayer("You may now go visit the East Tower.")
+        player:printToPlayer("You may now go visit the East Tower.")
     end 
 end)
 
@@ -33,7 +33,7 @@ m:addOverride("xi.zones.AlTaieu.npcs._0x3.onTrigger", function(player, npc)
     if player:getCurrentMission(xi.mission.log_id.COP) == xi.mission.id.cop.GARDEN_OF_ANTIQUITY then
         player:setCharVar("[SEA][AlTieu]EastTowerCS", 1)
         player:setCharVar("PromathiaStatus", 3)
-        player:PrintToPlayer("You may now return to the Crystalline Field.")
+        player:printToPlayer("You may now return to the Crystalline Field.")
     end
 end)
 
@@ -61,7 +61,7 @@ cu.reloadOverride(m, "xi.zones.Upper_Jeuno.npcs._6s1.onTrade", function(player, 
     if ringCount > 0 then
         player:tradeComplete()
         player:setCharVar("[COP]StoredRing", ringCount)
-        player:PrintToPlayer("Items have been stored. Come back to retrieve them after the cutscene.")
+        player:printToPlayer("Items have been stored. Come back to retrieve them after the cutscene.")
     end
 end)
 
@@ -116,7 +116,7 @@ m:addOverride("xi.zones.Upper_Jeuno.npcs._6s1.onTrigger", function(player, npc)
             title = "Ring Storage",
             onStart = function(playerArg)
                 -- NOTE: This could be used to lock the player in place
-                playerArg:PrintToPlayer(string.format("You have %i ring vouchers available", ringVoucher, xi.msg.channel.NS_SAY))
+                playerArg:printToPlayer(string.format("You have %i ring vouchers available", ringVoucher, xi.msg.channel.NS_SAY))
             end,
             options =
             {
@@ -128,7 +128,7 @@ m:addOverride("xi.zones.Upper_Jeuno.npcs._6s1.onTrigger", function(player, npc)
                             ringVoucher = ringVoucher - 1
                             player:setCharVar("[COP]StoredRing", ringVoucher)
                         else
-                            playerArg:PrintToPlayer("You don't have enough vouchers available to complete this transaction.", xi.msg.channel.NS_SAY)
+                            playerArg:printToPlayer("You don't have enough vouchers available to complete this transaction.", xi.msg.channel.NS_SAY)
                         end 
                     end,
                 },
@@ -140,7 +140,7 @@ m:addOverride("xi.zones.Upper_Jeuno.npcs._6s1.onTrigger", function(player, npc)
                             ringVoucher = ringVoucher - 1
                             player:setCharVar("[COP]StoredRing", ringVoucher)
                         else
-                            playerArg:PrintToPlayer("You don't have enough vouchers available to complete this transaction.", xi.msg.channel.NS_SAY)
+                            playerArg:printToPlayer("You don't have enough vouchers available to complete this transaction.", xi.msg.channel.NS_SAY)
                         end 
                     end,
                 },
@@ -152,7 +152,7 @@ m:addOverride("xi.zones.Upper_Jeuno.npcs._6s1.onTrigger", function(player, npc)
                             ringVoucher = ringVoucher - 1
                             player:setCharVar("[COP]StoredRing", ringVoucher)
                         else
-                            playerArg:PrintToPlayer("You don't have enough vouchers available to complete this transaction.", xi.msg.channel.NS_SAY)
+                            playerArg:printToPlayer("You don't have enough vouchers available to complete this transaction.", xi.msg.channel.NS_SAY)
                         end 
                     end,
                 },
