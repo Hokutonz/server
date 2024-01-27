@@ -99,7 +99,7 @@ local m = Module:new("august_adjustments_LUA")
         end)
         m:addOverride("xi.actions.mobskills.tartaric_sigil.onMobWeaponSkill", function(target, mob, skill)
             local dmgmod = 3.4
-            local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMainLvl() * 3, xi.magic.ele.DARK, dmgmod, xi.mobskills.magicalTpBonus.MAB_BONUS, 1)
+            local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMainLvl() * 3, xi.element.DARK, dmgmod, xi.mobskills.magicalTpBonus.MAB_BONUS, 1)
             local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
             target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.DARK)
 
@@ -113,7 +113,7 @@ local m = Module:new("august_adjustments_LUA")
         end)
         m:addOverride("xi.actions.mobskills.null_field.onMobWeaponSkill", function(target, mob, skill)
             local dmgmod = 1.3
-            local info   = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMainLvl() * 9, xi.magic.ele.FIRE, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT, 1)
+            local info   = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMainLvl() * 9, xi.element.FIRE, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT, 1)
             local dmg    = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
             target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.FIRE)
 
@@ -132,7 +132,7 @@ local m = Module:new("august_adjustments_LUA")
             xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.PARALYSIS, 15, 0, 60)
             xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.BLINDNESS, 15, 0, 60)
             local dmgmod = 1
-            local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getWeaponDmg() * 3, xi.magic.ele.LIGHTNING, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
+            local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getWeaponDmg() * 3, xi.element.LIGHTNING, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
             local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.LIGHTNING, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
             target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.LIGHTNING)
 

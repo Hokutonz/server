@@ -477,13 +477,13 @@ xi.shop =
             5311,    3000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Makibishi)
             5312,    3000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Hiraishin)
             5313,    3000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Mizu-Deppo)
-            5314,    5000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Shihei)
+            5314,   30000,      xi.ki.RHAPSODY_IN_CRIMSON,   -- Toolbag (Shihei)
             5315,    5000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Jusatsu)
             5316,    5000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Kaginawa)
             5317,    5000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Sairui-Ran)
             5318,    5000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Kodoku)
-            5319,   10000,      xi.ki.RHAPSODY_IN_WHITE,   -- Toolbag (Shinobi-Tabi)
-            5417,   10000,      xi.ki.RHAPSODY_IN_WHITE,   -- Toolbag (Sanjaku-Tenugui)
+            5319,   30000,      xi.ki.RHAPSODY_IN_WHITE,   -- Toolbag (Shinobi-Tabi)
+            5417,   30000,      xi.ki.RHAPSODY_IN_WHITE,   -- Toolbag (Sanjaku-Tenugui)
             5734,    5000,      xi.ki.RHAPSODY_IN_UMBER,   -- Toolbag (Soshi)
         },
         [curio.foodStuffs] =
