@@ -30,8 +30,8 @@ commandObj.onTrigger = function(player, jobId, level)
 
     -- validate level
     if level ~= nil then
-        if level < 1 or level > 99 then
-            error(player, 'Invalid level. Level must be between 1 and 99!')
+        if level < 1 or level > 37 then
+            error(player, 'Invalid level. Level must be between 1 and 37!')
             return
         end
     end
