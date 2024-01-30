@@ -129,3 +129,7 @@ DELETE FROM `mob_skill_lists` WHERE skill_list_id = "1099";
 INSERT INTO `mob_skill_lists` VALUES ('August_Skills',1099,3653);
 INSERT INTO `mob_skill_lists` VALUES ('August_Skills',1099,3654);
 INSERT INTO `mob_skill_lists` VALUES ('August_Skills',1099,3655);
+
+-- Mob Skills Mumor II
+INSERT INTO `mob_skills` VALUES (2904, 450, 'final_eternal_heart', 0, 7.0, 2000, 0, 4, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_Mumor_II', 1130, 2904);

@@ -233,6 +233,7 @@ m.model =
     RED_RACING_SILKS      = 192,
     WHITE_RACING_SILKS    = 193,
     GREEN_RACING_SILKS    = 194,
+    
     -- FULL SETS
     ASKAR_KORAZIN         = 195,
     DENALI_JACKET         = 196,
@@ -241,14 +242,20 @@ m.model =
     VALHALLA_BREASTPLATE  = 199,
     SHADOW_BREASTPLATE    = 200,
     SHADOW_COAT           = 201,
+    DANCER_ARTIFACT_F     = 211,
     SCHOLARS              = 214,
     ARGUTE                = 215,
+    BENEDIGHT             = 232,
     ETOILE                = 304,
     ACRO                  = 325,
     TAEON                 = 326,
     HELIOS                = 327,
+    DECENNIAL             = 331,
     ORVAIL                = 344,
+    AGENT                 = 407,
     STARLET               = 408,
+    PRETTY_PINK_SUBLIGAR  = 453,
+    HEART_APRON           = 576,
 }
 
 m.packet =
