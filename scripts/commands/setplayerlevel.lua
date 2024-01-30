@@ -34,8 +34,8 @@ commandObj.onTrigger = function(player, arg1, arg2)
     end
 
     -- validate level
-    if level == nil or level < 1 or level > 99 then
-        error(player, 'Invalid level.  Must be between 1 and 99.')
+    if level == nil or level < 1 or level > 75 then
+        error(player, 'Invalid level.  Must be between 1 and 75.')
         return
     end
 

@@ -230,6 +230,8 @@ xi.shop =
             790,     8000,   xi.craftRank.APPRENTICE,      -- Garnet
             808,     8000,   xi.craftRank.APPRENTICE,      -- Goshenite
             811,     8000,   xi.craftRank.APPRENTICE,      -- Ametrine
+            784,     8000,   xi.craftRank.APPRENTICE,      -- Jadeite
+            812,     8000,   xi.craftRank.APPRENTICE,      -- Deathstone
             798,     8000,   xi.craftRank.APPRENTICE,      -- Turquoise
             815,     8000,   xi.craftRank.APPRENTICE,      -- Sphene
             793,     8000,   xi.craftRank.APPRENTICE,      -- Black Pearl
@@ -453,7 +455,7 @@ xi.shop =
             4229,    5580,      xi.ki.RHAPSODY_IN_UMBER,   -- Darksteel Bolt Quiver
             5820,    9460,      xi.ki.RHAPSODY_IN_UMBER,   -- Darkling Bolt Quiver
             5821,    9790,      xi.ki.RHAPSODY_IN_UMBER,   -- Fusion Bolt Quiver
-            5359,     400,      xi.ki.RHAPSODY_IN_UMBER,   -- Bronze Bullet Pouch
+            5359,    1000,      xi.ki.RHAPSODY_IN_WHITE,   -- Bronze Bullet Pouch
             5363,    1920,      xi.ki.RHAPSODY_IN_UMBER,   -- Bullet Pouch
             5341,    2400,      xi.ki.RHAPSODY_IN_UMBER,   -- Spartan Bullet Pouch
             5353,    4800,      xi.ki.RHAPSODY_IN_UMBER,   -- Iron Bullet Pouch
