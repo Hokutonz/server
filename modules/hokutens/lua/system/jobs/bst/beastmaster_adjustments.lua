@@ -111,7 +111,8 @@ for i = 1, #bstAbilities do
                 dmgMultiplier = 1.0
             end
             
-            local originalDmg   = super(target, mob, skill)
+            local originalDmg   = 1
+            originalDmg         = super(target, mob, skill)
             local finalDmg      = math.floor(originalDmg * dmgMultiplier)
             if target:getHP() > 0 then
                 -- Undo damage dealt
