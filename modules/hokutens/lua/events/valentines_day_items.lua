@@ -35,6 +35,8 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
         21086,  10000,   -- Heartstopper 
         21087,  25000,   -- Heartstopper +1
         25850,  10000,   -- Pink Subligar
+         3654,   5000,   -- Tender Bouquet
+         5884,     10,   -- Rengedama (fireworks)
     }
 
     local juliet = zone:insertDynamicEntity({
@@ -70,6 +72,10 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
             --npc:ceEmote(player, xi.emote.HURRAY, xi.emoteMode.MOTION)
             if player:getCharVar("[HD]VALENTINES") == 18 then
                 player:printToPlayer("Have a beautiful Valentine's Day!", 0, npc:getPacketName())
+                if not player:hasKeyItem(xi.ki.CHOCOBO_CHAIR) then
+                    player:addKeyItem(xi.ki.CHOCOBO_CHAIR)
+                    player:messageSpecial(ID.text.KEYITEM_OBTAINED, xi.ki.CHOCOBO_CHAIR)
+                end
                 xi.shop.general(player, vday_stock)
             else
                 player:printToPlayer("Please help Mumor out first!", 0, npc:getPacketName())
