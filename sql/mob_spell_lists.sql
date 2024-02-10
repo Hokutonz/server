@@ -4255,9 +4255,9 @@ INSERT INTO `mob_spell_lists` VALUES ('TRUST_Ygnas',411,143,32,255); -- erase (3
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Lion_II',418,338,12,255); -- utsusemi_ichi (12~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Lion_II',418,339,37,255); -- utsusemi_ni (37~255)
 
--- TRUST_Zied_II (419)
-INSERT INTO `mob_spell_lists` VALUES ('TRUST_Zied_II',419,243,91,255); -- absorb-attri (91~255)
-INSERT INTO `mob_spell_lists` VALUES ('TRUST_Zied_II',419,252,37,255); -- stun (37~255)
+-- TRUST_Zeid_II (419)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Zeid_II',419,243,91,255); -- absorb-attri (91~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Zeid_II',419,252,37,255); -- stun (37~255)
 
 -- TRUST_Prishe_II (420)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe_II',420,7,16,255);  -- curaga (16~255)
@@ -4271,6 +4271,8 @@ INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,1,1,255);    -- c
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,2,11,255);   -- cure_ii (11~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,3,21,255);   -- cure_iii (21~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,4,41,255);   -- cure_iv (41~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,5,61,255);   -- cure_v (41~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,6,80,255);   -- cure_vi (41~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,7,16,255);   -- curaga (16~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,8,31,255);   -- curaga_ii (31~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Nashmeira_II',421,9,51,255);   -- curaga_iii (51~255)

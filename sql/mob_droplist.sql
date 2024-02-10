@@ -2342,8 +2342,6 @@ INSERT INTO `mob_droplist` VALUES (236,0,0,1000,859,200);     -- Ram Skin (20.0%
 INSERT INTO `mob_droplist` VALUES (236,0,0,1000,859,170);     -- Ram Skin (17.0%)
 INSERT INTO `mob_droplist` VALUES (236,2,0,1000,832,0);       -- Clump Of Sheep Wool (Steal)
 
--- ZoneID: 185 - Battlechoir Gitchfotch
--- ZoneID: 185 - Soulsender Fugbrag
 -- ZoneID: 185 - Wyrmgnasher Bjakdek
 INSERT INTO `mob_droplist` VALUES (237,0,0,1000,1452,@COMMON); -- Ordelle Bronzepiece (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (237,0,0,1000,1452,@COMMON); -- Ordelle Bronzepiece (Common, 15%)
@@ -6263,7 +6261,7 @@ INSERT INTO `mob_droplist` VALUES (756,2,0,1000,4373,0);  -- Woozyshroom (Steal)
 
 -- ZoneID:  28 - Elel
 INSERT INTO `mob_droplist` VALUES (757,0,0,1000,1614,@ALWAYS);    -- Corse Bracelet (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (757,0,0,1000,14867,400);       -- Magical Mitts (40.0%)
+INSERT INTO `mob_droplist` VALUES (757,0,0,1000,14867,@UNCOMMON); -- Magical Mitts (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (757,0,0,1000,1639,@VCOMMON);   -- Corse Robe (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (757,0,0,1000,15174,@UNCOMMON); -- Frenzy Sallet (Uncommon, 10%)
 
@@ -12573,8 +12571,6 @@ INSERT INTO `mob_droplist` VALUES (1559,0,0,1000,18802,@UNCOMMON); -- Vallus Gri
 INSERT INTO `mob_droplist` VALUES (1559,0,0,1000,746,80);          -- Platinum Ingot (8.0%)
 INSERT INTO `mob_droplist` VALUES (1559,0,0,1000,4272,30);         -- Slice Of Dragon Meat (3.0%)
 
--- ZoneID: 187 - Maa Febi The Steadfast
--- ZoneID: 187 - Muu Febi The Steadfast
 -- ZoneID: 187 - Xoo Kaza The Solemn
 INSERT INTO `mob_droplist` VALUES (1560,0,0,1000,3355,@VCOMMON); -- Divine Bijou (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (1560,0,0,1000,1449,@COMMON);  -- Tukuku Whiteshell (Common, 15%)
@@ -23623,7 +23619,7 @@ INSERT INTO `mob_droplist` VALUES (2866,0,0,1000,4877,20);       -- Scroll Of Ab
 INSERT INTO `mob_droplist` VALUES (2866,0,0,1000,4878,20);       -- Scroll Of Absorb-Int (2.0%)
 INSERT INTO `mob_droplist` VALUES (2866,2,0,1000,880,0);         -- Bone Chip (Steal)
 
--- ZoneID: Unknown - Unknown
+-- ZoneID: 192 - Magicked Bones
 INSERT INTO `mob_droplist` VALUES (2867,0,0,1000,880,280);  -- Bone Chip (28.0%)
 INSERT INTO `mob_droplist` VALUES (2867,0,0,1000,16753,40); -- Ceremonial Dagger (4.0%)
 INSERT INTO `mob_droplist` VALUES (2867,2,0,1000,880,0);    -- Bone Chip (Steal)
@@ -26779,6 +26775,10 @@ INSERT INTO `mob_droplist` VALUES (3290,0,0,1000,11289,@COMMON);  -- Dark Ixion:
 INSERT INTO `mob_droplist` VALUES (3290,0,0,1000,16242,@VCOMMON); -- Dark Ixion: Ixion Cape
 INSERT INTO `mob_droplist` VALUES (3290,0,0,1000,2654,@ALWAYS);   -- Dark Ixion: Horn
 INSERT INTO `mob_droplist` VALUES (3290,0,0,1000,2655,@ALWAYS);   -- Dark Ixion: Tail
+
+-- ZoneID: 92 - Ferroalloy Quadav
+INSERT INTO `mob_droplist` VALUES (3292,0,0,1000,2504,@COMMON);   -- Heavy Quadav Chestplate (Common, 15%)
+INSERT INTO `mob_droplist` VALUES (3292,0,0,1000,2505,@UNCOMMON); -- Heavy Quadav Backplate (Uncommon, 10%)
 
 /*!40000 ALTER TABLE `mob_droplist` ENABLE KEYS */;
 UNLOCK TABLES;

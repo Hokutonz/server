@@ -12,12 +12,16 @@ xi.spells.blue = xi.spells.blue or {}
 -----------------------------------
 
 -- The TP modifier (currently unused)
-TPMOD_NONE     = 0
-TPMOD_CRITICAL = 1
-TPMOD_DAMAGE   = 2
-TPMOD_ACC      = 3
-TPMOD_ATTACK   = 4
-TPMOD_DURATION = 5
+xi.spells.blue.tpMod =
+{
+    NONE          = 0,
+    CRITICAL      = 1,
+    DAMAGE        = 2,
+    ACC           = 3,
+    ATTACK        = 4,
+    DURATION      = 5,
+    EFFECT_CHANCE = 6,
+}
 
 -----------------------------------
 -- Local functions
@@ -25,11 +29,11 @@ TPMOD_DURATION = 5
 
 -- Get alpha (level-dependent multiplier on WSC)
 local function calculateAlpha(level)
-    if level < 61 then
+    if level <= 60 then
         return math.ceil(100 - level / 6) / 100
     elseif level <= 75 then
-        return math.ceil(100 - level - 40 / 2) / 100
-    elseif level <= 99 then
+        return math.ceil(100 - (level - 40) / 2) / 100
+    else
         return 0.83
     end
 end
@@ -215,7 +219,7 @@ xi.spells.blue.usePhysicalSpell = function(caster, target, spell, params)
     params.bonusacc     = params.bonusacc == nil and 0 or params.bonusacc
 
     -- params.critchance will only be non-nil if base critchance is passed from spell lua
-    local nativecrit  = xi.combat.physical.calculateSwingCriticalRate(caster, target, false, 0, 0, 0)
+    local nativecrit  = xi.combat.physical.calculateSwingCriticalRate(caster, target)
     params.critchance = params.critchance == nil and 0 or utils.clamp(params.critchance / 100 + nativecrit, 0.05, 0.95)
 
     local cratio  = calculatecRatio(params.offcratiomod / target:getStat(xi.mod.DEF), caster:getMainLvl(), target:getMainLvl())

@@ -1812,10 +1812,12 @@ void CCharEntity::OnRangedAttack(CRangeState& state, action_t& action)
                 {
                     charutils::TrySkillUP(this, (SKILLTYPE)PAmmo->getSkillType(), PTarget->GetMLevel());
                 }
+                totalDamage += damage;
             }
         }
         else // miss
         {
+            damage                  = 0;
             actionTarget.reaction   = REACTION::EVADE;
             actionTarget.speceffect = SPECEFFECT::NONE;
             actionTarget.messageID  = 354;
@@ -1831,11 +1833,15 @@ void CCharEntity::OnRangedAttack(CRangeState& state, action_t& action)
 
         recycleChance += this->PJobPoints->GetJobPointValue(JP_AMMO_CONSUMPTION);
 
-        // Only remove unlimited shot on hit
-        if (hitOccured && this->StatusEffectContainer->HasStatusEffect(EFFECT_UNLIMITED_SHOT))
+        if (this->StatusEffectContainer->HasStatusEffect(EFFECT_UNLIMITED_SHOT))
         {
-            StatusEffectContainer->DelStatusEffect(EFFECT_UNLIMITED_SHOT);
+            // Never consume ammo with Unlimited Shot active
             recycleChance = 100;
+            // Only remove unlimited shot on hit
+            if (hitOccured)
+            {
+                StatusEffectContainer->DelStatusEffect(EFFECT_UNLIMITED_SHOT);
+            }
         }
 
         if (PAmmo != nullptr && xirand::GetRandomNumber(100) > recycleChance)
@@ -1847,7 +1853,6 @@ void CCharEntity::OnRangedAttack(CRangeState& state, action_t& action)
                 hitCount = i;
             }
         }
-        totalDamage += damage;
     }
 
     // if a hit did occur (even without barrage)
@@ -1863,12 +1868,6 @@ void CCharEntity::OnRangedAttack(CRangeState& state, action_t& action)
 
         actionTarget.param =
             battleutils::TakePhysicalDamage(this, PTarget, PHYSICAL_ATTACK_TYPE::RANGED, totalDamage, false, slot, realHits, nullptr, true, true);
-
-        // lower damage based on shadows taken
-        if (shadowsTaken)
-        {
-            actionTarget.param = (int32)(actionTarget.param * (1 - ((float)shadowsTaken / realHits)));
-        }
 
         // absorb message
         if (actionTarget.param < 0)
@@ -2074,6 +2073,14 @@ void CCharEntity::OnItemFinish(CItemState& state, action_t& action)
     TracyZoneScoped;
     auto* PTarget = static_cast<CBattleEntity*>(state.GetTarget());
     auto* PItem   = state.GetItem();
+
+    if (!PItem->isType(ITEM_EQUIPMENT) && (PItem->getQuantity() < 1 || PItem->getReserve() > 0))
+    {
+        ShowWarning("OnItemFinish: %s attempted to use reserved/insufficient %s (%u).", this->getName(), PItem->getName(), PItem->getID());
+        this->pushPacket(new CMessageBasicPacket(this, this, PItem->getID(), 0, MSGBASIC_ITEM_FAILS_TO_ACTIVATE));
+
+        return;
+    }
 
     // TODO: I'm sure this is supposed to be in the action packet... (animation, message)
     if (PItem->getAoE())
