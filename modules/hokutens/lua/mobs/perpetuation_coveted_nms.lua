@@ -82,7 +82,7 @@ m:addOverride("xi.zones.Jugner_Forest.mobs.King_Arthro.onMobDespawn", function(m
     GetMobByID(kingArthroID):setLocalVar("[POP]King_Arthro", 0)
 
     -- Server Variable work.
-    local random = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows
+    local random = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]KA", os.time() + random) -- Save next pop time.
 
@@ -121,7 +121,7 @@ m:addOverride("xi.zones.RoMaeve.mobs.Shikigami_Weapon.onMobDespawn", function(mo
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
     SetServerVariable("[HNM]Shikigami_Weapon", os.time() + randomPopTime) -- Save next pop time.
 
     -- Set spawn time and position.
@@ -158,7 +158,7 @@ m:addOverride("xi.zones.Garlaige_Citadel.mobs.Serket.onMobDespawn", function(mob
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Serket", os.time() + randomPopTime) -- Save next pop time.
 
@@ -209,7 +209,7 @@ m:addOverride("xi.zones.Maze_of_Shakhrami.mobs.Argus.onMobDespawn", function(mob
     super(mob)
 
     -- Server Variable work.
-    local argusPopTime = 75600 + math.random(0, 6) * 1800
+    local argusPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
     SetServerVariable("[HNM]Argus", os.time() + argusPopTime) -- Save next pop time.
 
     -- Set spawn time and position.
@@ -221,7 +221,7 @@ m:addOverride("xi.zones.Maze_of_Shakhrami.mobs.Leech_King.onMobDespawn", functio
     super(mob)
 
     -- Server Variable work.
-    local leechKingPopTime = 75600 + math.random(0, 6) * 1800
+    local leechKingPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
     SetServerVariable("[HNM]Leech_King", os.time() + leechKingPopTime) -- Save next pop time.
 
     -- Set spawn time and position.
@@ -258,7 +258,7 @@ m:addOverride("xi.zones.Labyrinth_of_Onzozo.mobs.Lord_of_Onzozo.onMobDespawn", f
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Lord_of_Onzozo", os.time() + randomPopTime) -- Save next pop time.
 

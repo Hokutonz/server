@@ -25,10 +25,10 @@ local removableEffectIds =
 local oilType =
 {
 --  ItemId                               { Base, %HP, Time(s) }
-    [xi.item.CAN_OF_AUTOMATON_OIL   ] = { 20, 0.1, 15 },
-    [xi.item.CAN_OF_AUTOMATON_OIL_P1] = { 40, 0.2, 30 },
-    [xi.item.CAN_OF_AUTOMATON_OIL_P2] = { 60, 0.3, 45 },
-    [xi.item.CAN_OF_AUTOMATON_OIL_P3] = { 80, 0.4, 60 },
+    [xi.item.CAN_OF_AUTOMATON_OIL   ] = {  50, 0.1, 30 },
+    [xi.item.CAN_OF_AUTOMATON_OIL_P1] = {  75, 0.2, 45 },
+    [xi.item.CAN_OF_AUTOMATON_OIL_P2] = { 100, 0.3, 60 },
+    [xi.item.CAN_OF_AUTOMATON_OIL_P3] = { 150, 0.4, 75 },
 }
 
 local function removeStatus(pet)

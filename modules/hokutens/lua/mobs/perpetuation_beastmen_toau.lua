@@ -50,7 +50,7 @@ m:addOverride("xi.zones.Arrapago_Reef.mobs.Medusa.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 291600 + math.random(0, 6) * 600 -- Modified Windows (81-82 hours with 10 minute windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Medusa", os.time() + randomPopTime) -- Save next pop time.
 
@@ -89,7 +89,7 @@ m:addOverride("xi.zones.Halvung.mobs.Gurfurlur_the_Menacing.onMobDespawn", funct
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 291600 + math.random(0, 6) * 600 -- Modified Windows (81-82 hours with 10 minute windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Gurfurlur_the_Menacing", os.time() + randomPopTime) -- Save next pop time.
 
@@ -115,7 +115,7 @@ m:addOverride("xi.zones.Mamook.Zone.onInitialize", function(zone)
     end
 
     if hundredfacedPopTime == 0 then
-        hundredfacedPopTime = os.time() + 259200 -- Original (Spawns 3 days after first time Set Up)
+        hundredfacedPopTime = os.time() + math.random(1, 12) * 3600 -- Modified
 
         SetServerVariable("[HNM]Hundredfaced_Hapool_Ja", hundredfacedPopTime) -- Save pop time.
     end
@@ -142,7 +142,7 @@ m:addOverride("xi.zones.Mamook.mobs.Gulool_Ja_Ja.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local guloolJaJaPopTime = 291600 + math.random(0, 6) * 600 -- Modified Windows (81-82 hours with 10 minute windows)
+    local guloolJaJaPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Gulool_Ja_Ja", os.time() + guloolJaJaPopTime) -- Save next pop time.
 
@@ -155,7 +155,7 @@ m:addOverride("xi.zones.Mamook.mobs.Hundredfaced_Hapool_Ja.onMobDespawn", functi
     super(mob)
 
     -- Server Variable work.
-    local hundredfacedPopTime = 259200 -- Original Windows (every 3 days)
+    local hundredfacedPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Hundredfaced_Hapool_Ja", os.time() + hundredfacedPopTime) -- Save next pop time.
 

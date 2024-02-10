@@ -1,0 +1,90 @@
+-----------------------------------
+-- Area: Boneyard Gully
+-- Mob: Gwyn Ap Knudd
+-- ENM: Totentanz
+-----------------------------------
+require("modules/module_utils")
+-----------------------------------
+local m = Module:new("totentanz_gwyn_ap_knudd")
+
+xi.module.ensureTable("xi.zones.Boneyard_Gully.mobs.Gwyn_Ap_Knudd")
+
+m:addOverride("xi.zones.Boneyard_Gully.mobs.Gwyn_Ap_Knudd.onMobEngaged", function(mob)
+    mob:setLocalVar("timer", os.time() + math.random(15, 30))
+    mob:getBattlefield():setLocalVar("undeadControl", 1)
+end)
+
+m:addOverride("xi.zones.Boneyard_Gully.mobs.Gwyn_Ap_Knudd.onMobWeaponSkillPrepare", function(mob, target, skill)
+    for i = 1, 3 do
+        local undead = GetMobByID(mob:getID()+i)
+        local ability = math.random(478, 479)
+
+        if undead:isAlive() then
+            undead:queue(0, function(undeadArg)
+                undeadArg:useMobAbility(ability, undeadArg:getTarget())
+            end)
+        end
+    end
+end)
+
+m:addOverride("xi.zones.Boneyard_Gully.mobs.Gwyn_Ap_Knudd.onMobMagicPrepare", function(mob, target, spell)
+    mob:timer(4000, function(mobArg)
+        for i = 4, 9 do
+            local undead = GetMobByID(mobArg:getID()+i)
+
+            if
+                undead ~= nil and
+                undead:isAlive() and
+                undead:getTarget() ~= nil
+            then
+                if spell:getID() ~= 245 and spell:getID() ~= 247 then -- mimic aga spell but 1 tier lower
+                    undead:castSpell(spell:getID() - 1, undead:getTarget())
+                else
+                    print(string.format("ELSE: spellID: %s", spell:getID()))
+                    undead:castSpell(spell:getID(), target)
+                end
+            end
+        end
+    end)
+end)
+
+m:addOverride("xi.zones.Boneyard_Gully.mobs.Gwyn_Ap_Knudd.onMobFight", function(mob, target)
+    if mob:getLocalVar("timer") < os.time() then
+        mob:setLocalVar("timer", os.time() + math.random(15, 30))
+        mob:setLocalVar("addControl", 0)
+        local control = false
+
+        for i = 1, 9 do
+            if not GetMobByID(mob:getID()+i):isAlive() then
+                control = true
+            end
+        end
+
+        while control do
+            local undead = GetMobByID(mob:getID() + math.random(1,9))
+            if not undead:isAlive() then
+                undead:setHP(undead:getMaxHP())
+                undead:resetAI()
+                undead:hideName(false)
+                undead:setUntargetable(false)
+                undead:updateEnmity(target)
+                control = false
+            end
+        end
+    end
+end)
+
+m:addOverride("xi.zones.Boneyard_Gully.mobs.Gwyn_Ap_Knudd.onMobDeath", function(mob, player, optParams)
+    if optParams.isKiller then
+        for i = 1, 9 do
+            local undead = GetMobByID(mob:getID()+i)
+            undead:setBehaviour(bit.bor(mob:getBehaviour(), xi.behavior.NONE))
+
+            if undead:isAlive() then
+                undead:setHP(0)
+            end
+        end
+    end
+end)
+
+return m

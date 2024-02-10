@@ -304,6 +304,8 @@ xi.shop =
             915,     3600,   xi.craftRank.JOURNEYMAN,      -- Toad Oil
             931,     5000,    xi.craftRank.CRAFTSMAN,      -- Cermet Chunk
             944,     1035,    xi.craftRank.CRAFTSMAN,      -- Venom Dust
+            2175,    5000,      xi.craftRank.VETERAN,      -- Flan Meat
+            2229,    5000,      xi.craftRank.VETERAN,      -- Chimera Blood
             8889,     300,      xi.craftRank.AMATEUR,      -- Alchemy Kit 5
             8890,     400,      xi.craftRank.AMATEUR,      -- Alchemy Kit 10
             8891,     650,      xi.craftRank.AMATEUR,      -- Alchemy Kit 15
