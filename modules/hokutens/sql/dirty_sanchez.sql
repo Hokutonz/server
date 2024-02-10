@@ -11,3 +11,4 @@ UPDATE `abilities` SET `message2`='0' WHERE  `abilityId`=761;
 UPDATE `abilities` SET `animation`='0' WHERE  `abilityId`=762;
 UPDATE `mob_skills` SET `mob_anim_id`='2168' WHERE  `mob_skill_id`=2946;
 UPDATE `mob_skills` SET `mob_anim_id`='2169' WHERE  `mob_skill_id`=2947;
+UPDATE `abilities` SET `recastTime`=1 WHERE  `abilityId`=761;

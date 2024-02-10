@@ -43,7 +43,7 @@ m:addOverride("xi.zones.Rolanberry_Fields.mobs.Simurgh.onMobDespawn", function(m
     super(mob) -- Note: We will overwrite existing logic for Simurgh's respawn time with below's logic.
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows.
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Simurgh", os.time() + randomPopTime) -- Save next pop time.
 
@@ -81,7 +81,7 @@ m:addOverride("xi.zones.Sauromugue_Champaign.mobs.Roc.onMobDespawn", function(mo
     super(mob) -- Note: We will overwrite existing logic for Roc's respawn time with below's logic.
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows.
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Roc", os.time() + randomPopTime) -- Save next pop time.
 

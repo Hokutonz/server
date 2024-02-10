@@ -43,7 +43,7 @@ m:addOverride("xi.zones.Gustav_Tunnel.mobs.Bune.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 1800
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Bune", os.time() + randomPopTime) -- Save next pop time.
 
@@ -81,7 +81,7 @@ m:addOverride("xi.zones.Kuftal_Tunnel.mobs.Guivre.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 1800
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Guivre", os.time() + randomPopTime) -- Save next pop time.
 

@@ -44,7 +44,7 @@ m:addOverride("xi.zones.Attohwa_Chasm.mobs.Tiamat.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 291600 + math.random(0, 6) * 600 -- Modified Windows (81-82 hours with 10 minute windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Tiamat", os.time() + randomPopTime) -- Save next pop time.
 
@@ -82,7 +82,7 @@ m:addOverride("xi.zones.King_Ranperres_Tomb.mobs.Vrtra.onMobDespawn", function(m
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 291600 + math.random(0, 6) * 600 -- Modified Windows (81-82 hours with 10 minute windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Vrtra", os.time() + randomPopTime) -- Save next pop time.
 
@@ -120,7 +120,7 @@ m:addOverride("xi.zones.Uleguerand_Range.mobs.Jormungand.onMobDespawn", function
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 291600 + math.random(0, 6) * 600 -- Modified Windows (81-82 hours with 10 minute windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Jormungand", os.time() + randomPopTime) -- Save next pop time.
 

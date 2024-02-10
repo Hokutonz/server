@@ -44,7 +44,7 @@ m:addOverride("xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn", function
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Behemoth", os.time() + randomPopTime) -- Save next pop time.
 
@@ -82,7 +82,7 @@ m:addOverride("xi.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Fafnir", os.time() + randomPopTime) -- Save next pop time.
 
@@ -120,7 +120,7 @@ m:addOverride("xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn", functi
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 75600 + math.random(0, 6) * 300 -- 21-21.5 hours with 5 minute windows
+    local randomPopTime = 21600 + math.random(0, 6) * 300 -- 6-6.5 hours with 5 minute windows
 
     SetServerVariable("[HNM]Adamantoise", os.time() + randomPopTime) -- Save next pop time.
 

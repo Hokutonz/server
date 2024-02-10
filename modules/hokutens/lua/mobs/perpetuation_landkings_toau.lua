@@ -49,7 +49,7 @@ m:addOverride("xi.zones.Caedarva_Mire.mobs.Khimaira.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 205200 + math.random(0, 6) * 600 -- Modified Windows (57-60 Hours with Half Hour Windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Khimaira", os.time() + randomPopTime) -- Save next pop time.
 
@@ -87,7 +87,7 @@ m:addOverride("xi.zones.Mount_Zhayolm.mobs.Cerberus.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 205200 + math.random(0, 6) * 600 -- Modified Windows (57-60 Hours with Half Hour Windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Cerberus", os.time() + randomPopTime) -- Save next pop time.
 
@@ -125,7 +125,7 @@ m:addOverride("xi.zones.Wajaom_Woodlands.mobs.Hydra.onMobDespawn", function(mob)
     super(mob)
 
     -- Server Variable work.
-    local randomPopTime = 205200 + math.random(0, 6) * 600 -- Modified Windows (57-60 Hours with Half Hour Windows)
+    local randomPopTime = 75600 + math.random(0, 6) * 1800 -- Modified Windows (21-24 hours with 30 minute windows)
 
     SetServerVariable("[HNM]Hydra", os.time() + randomPopTime) -- Save next pop time.
 
