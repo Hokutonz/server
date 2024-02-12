@@ -73,7 +73,7 @@ entity.onTrigger = function(player, npc)
         4647,  20000, -- Scroll of Banishga II
         4737, 150000, -- Scroll of Protecra V
         4742, 150000, -- Scroll of Shellra V
-        4633, 139135, -- Scroll of Dia III
+        4633, 150000, -- Scroll of Dia III
         6569, 139135, -- Scroll of Slow II
         6570, 139135, -- Scroll of Paralyze II
         6571, 139135, -- Scroll of Phalanx II
