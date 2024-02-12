@@ -26,6 +26,20 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
         widescan = 1,
 
         onTrade = function(player, npc, trade)
+            if npcUtil.tradeHasExactly(trade, { xi.item.EARTH_STAFF, xi.item.WATER_STAFF,
+                                    xi.item.WIND_STAFF, xi.item.FIRE_STAFF, xi.item.ICE_STAFF,
+                                    xi.item.THUNDER_STAFF, xi.item.LIGHT_STAFF, xi.item.DARK_STAFF })
+            then
+                player:tradeComplete()
+                player:addItem(xi.item.IRIDAL_STAFF, 1)
+            end
+            if npcUtil.tradeHasExactly(trade, { xi.item.TERRAS_STAFF, xi.item.NEPTUNES_STAFF,
+                                    xi.item.AUSTERS_STAFF, xi.item.VULCANS_STAFF, xi.item.AQUILOS_STAFF,
+                                    xi.item.JUPITERS_STAFF, xi.item.APOLLOS_STAFF, xi.item.PLUTOS_STAFF })
+            then
+                player:tradeComplete()
+                player:addItem(xi.item.CHATOYANT_STAFF, 1)
+            end
         end,
 
         onTrigger = function(player, npc)

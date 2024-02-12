@@ -51,7 +51,7 @@ entity.onTrigger = function(player, npc)
         4819, 150000, -- Scroll of Quake II
         4821, 150000, -- Scroll of Burst II
         4823, 150000, -- Scroll of Flood II
-        4840, 139125, -- Scroll of Bio III
+        4840, 150000, -- Scroll of Bio III
         4884, 139125, -- Scroll of Blind II
     }
 
