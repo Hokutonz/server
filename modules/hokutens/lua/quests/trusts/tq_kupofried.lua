@@ -102,7 +102,7 @@ local entity =
             REMINDERKIPLI = { "Check with Kipli in Bastok Mines." },
             FINISH    =
             {
-                "Oh thank god you finally found him!.",
+                "Oh thank god you finally found him!",
                 { delay = 1000 },
                 " Of course he found trouble, I should have known.",
                 { delay = 2000 },

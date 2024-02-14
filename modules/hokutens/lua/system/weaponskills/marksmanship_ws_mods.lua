@@ -106,7 +106,7 @@ marksmanship:addOverride("xi.actions.weaponskills.leaden_salute.onUseWeaponSkill
     params.ftp100 = 4.35 params.ftp200 = 4.50 params.ftp300 = 4.65
     params.str_wsc = 0.0 params.dex_wsc = 0.0 params.vit_wsc = 0.0 params.agi_wsc = 0.95 params.int_wsc = 0.0
     params.mnd_wsc = 0.0 params.chr_wsc = 0.0
-    params.ele = xi.magic.ele.DARK
+    params.ele = xi.element.DARK
     params.skill = xi.skill.MARKSMANSHIP
     params.includemab = true
 
@@ -133,7 +133,7 @@ marksmanship:addOverride("xi.actions.weaponskills.trueflight.onUseWeaponSkill", 
     params.str_wsc = 0.0 params.dex_wsc = 0.0 params.vit_wsc = 0.0
     params.agi_wsc = 0.75 params.int_wsc = 0.0 params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
-    params.ele = xi.magic.ele.LIGHT
+    params.ele = xi.element.LIGHT
     params.skill = xi.skill.MARKSMANSHIP
     params.includemab = true
 

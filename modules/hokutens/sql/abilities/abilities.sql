@@ -7,3 +7,5 @@ UPDATE `abilities` SET `recastTime`=300 WHERE  `abilityId`=136;
 UPDATE `abilities` SET `recastTime`=120 WHERE  `abilityId`=137;
 # Maintenance to 1 min
 UPDATE `abilities` SET `recastTime`=60 WHERE  `abilityId`=322;
+# Update Haste Samba to lvl 37
+UPDATE `abilities` SET `level`='37' WHERE  `abilityId`=189;

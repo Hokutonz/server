@@ -2262,6 +2262,7 @@ xi.item =
     SCROLL_OF_TELEPORT_HOLLA            = 4730,
     SCROLL_OF_TELEPORT_DEM              = 4731,
     SCROLL_OF_TELEPORT_MEA              = 4732,
+    SCROLL_OF_PROTECTRA                 = 4733,
     SCROLL_OF_INVISIBLE                 = 4744,
     SCROLL_OF_SNEAK                     = 4745,
     SCROLL_OF_DEODORIZE                 = 4746,

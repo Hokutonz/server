@@ -15,19 +15,24 @@ entity.onTrigger = function(player, npc)
     {
         4654,  77350,    -- Protect IV
         4736, 100000,    -- Protectra IV
+        4659,  77350,    -- Shell IV
+        4741, 100000,    -- Shellra IV
         4868,  63700,    -- Dispel
         4860,  31850,    -- Stun
         4720,  31850,    -- Flash
-        4750, 546000,    -- Reraise III
+        4748, 200000,    -- Raise III
+        4750, 250000,    -- Reraise III
         4638,  78260,    -- Banish III
         4701,  25000,    -- Cura
-        5082,  88389,    -- Cura II
+        --5082,  88389,    -- Cura II
         4702,  62192,    -- Sacrifice
         4703,  64584,    -- Esuna
         4704,  50000,    -- Auspice
+        4613, 100000,    -- Cure V
+        4618, 125000,    -- Curaga IV
         --4614, 141137,    -- Cure VI
-        4655, 125000,    -- Protect V
-        4660, 125000,    -- Shell V
+        --4655, 125000,    -- Protect V
+        --4660, 125000,    -- Shell V
         5103, 250000,    -- Crusade
     }
 

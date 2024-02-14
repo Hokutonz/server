@@ -55,7 +55,7 @@ axe:addOverride ("xi.actions.weaponskills.onslaught.onUseWeaponSkill", function(
     local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
     if damage > 0 then
         if not target:hasStatusEffect(xi.effect.ACCURACY_DOWN) then
-            local duration = tp / 1000 * 20 * applyResistanceAddEffect(player, target, xi.magic.ele.EARTH, 0)
+            local duration = tp / 1000 * 20 * applyResistanceAddEffect(player, target, xi.element.EARTH, 0)
             target:addStatusEffect(xi.effect.ACCURACY_DOWN, 20, 0, duration)
         end
     end
@@ -81,7 +81,7 @@ axe:addOverride ("xi.actions.weaponskills.primal_rend.onUseWeaponSkill", functio
     params.ftp100 = 4.75 params.ftp200 = 4.85 params.ftp300 = 4.95
     params.str_wsc = 0.0 params.dex_wsc = 0.70 params.vit_wsc = 0.0 params.agi_wsc = 0.0 params.int_wsc = 0.0
     params.mnd_wsc = 0.0 params.chr_wsc = 0.70
-    params.ele = xi.magic.ele.LIGHT
+    params.ele = xi.element.LIGHT
     params.skill = xi.skill.AXE
     params.includemab = true
 

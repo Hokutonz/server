@@ -56,7 +56,7 @@ katana:addOverride ("xi.actions.weaponskills.blade_kamu.onUseWeaponSkill", funct
     local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
     if damage > 0 then
         if not target:hasStatusEffect(xi.effect.ACCURACY_DOWN) then
-            local duration = tp / 1000 * 60 * applyResistanceAddEffect(player, target, xi.magic.ele.EARTH, 0)
+            local duration = tp / 1000 * 60 * applyResistanceAddEffect(player, target, xi.element.EARTH, 0)
             target:addStatusEffect(xi.effect.ACCURACY_DOWN, 10, 0, duration)
         end
     end
@@ -110,7 +110,7 @@ katana:addOverride ("xi.actions.weaponskills.blade_metsu.onUseWeaponSkill", func
     local damage, criticalHit, tpHits, extraHits = xi.weaponskills.doPhysicalWeaponskill(player, target, wsID, params, tp, action, primary, taChar)
     if damage > 0 then
         if not target:hasStatusEffect(xi.effect.PARALYSIS) then
-            local duration = 60 * applyResistanceAddEffect(player, target, xi.magic.ele.ICE, 0)
+            local duration = 60 * applyResistanceAddEffect(player, target, xi.element.ICE, 0)
             target:addStatusEffect(xi.effect.PARALYSIS, 10, 0, duration)
         end
     end
