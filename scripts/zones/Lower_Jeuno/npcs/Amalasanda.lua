@@ -66,11 +66,13 @@ entity.onTrigger = function(player, npc)
             4853,  20000, -- Drain
             4855,  20000, -- Aspir
             4857,  25000, -- Blaze Spikes
+            4858,  25000, -- Ice Spikes
             4869,  25000, -- Warp
             4870, 250000, -- Warp II
             4873,  50000, -- Retrace
             4882, 500000, -- Sleepga II
             4946, 100000, -- Utsusemi: Ichi
+            4947,1000000, -- Utsusemi: Ni
             4994,  25000, -- Mage's Ballad
         }
 

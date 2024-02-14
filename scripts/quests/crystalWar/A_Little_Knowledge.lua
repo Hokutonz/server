@@ -165,6 +165,7 @@ quest.sections =
                     if quest:complete(player) then
                         player:unlockJob(xi.job.SCH)
                         player:messageSpecial(eldiemeSID.text.YOU_CAN_NOW_BECOME_A_SCHOLAR)
+                        player:setCharVar("[SCH]Stage", 1)
                     end
                 end,
             },
@@ -173,7 +174,8 @@ quest.sections =
 
     {
         check = function(player, status, vars)
-            return status == QUEST_COMPLETED
+            return status == QUEST_COMPLETED and
+                player:getCharVar("[SCH]Stage") == 1
         end,
 
         [xi.zone.THE_ELDIEME_NECROPOLIS_S] =
@@ -198,6 +200,7 @@ quest.sections =
                     player:addSpell(xi.magic.spell.EMBRAVA, true)
                     player:addSpell(xi.magic.spell.KAUSTRA, true)
                     player:messageSpecial(eldiemeSID.text.YOU_LEARN_EMBRAVA_AND_KAUSTRA)
+                    player:setCharVar("[SCH]Stage", 2)
                 end,
             }
         },

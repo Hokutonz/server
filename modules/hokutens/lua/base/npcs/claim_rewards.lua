@@ -32,6 +32,7 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
             then
                 player:tradeComplete()
                 player:addItem(xi.item.IRIDAL_STAFF, 1)
+                player:messageBasic(xi.msg.basic.ITEM_OBTAINED, xi.item.IRIDAL_STAFF)
             end
             if npcUtil.tradeHasExactly(trade, { xi.item.TERRAS_STAFF, xi.item.NEPTUNES_STAFF,
                                     xi.item.AUSTERS_STAFF, xi.item.VULCANS_STAFF, xi.item.AQUILOS_STAFF,
@@ -39,6 +40,7 @@ m:addOverride("xi.zones.Leafallia.Zone.onInitialize", function(zone)
             then
                 player:tradeComplete()
                 player:addItem(xi.item.CHATOYANT_STAFF, 1)
+                player:messageBasic(xi.msg.basic.ITEM_OBTAINED, xi.item.CHATOYANT_STAFF)
             end
         end,
 

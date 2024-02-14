@@ -58,7 +58,7 @@ club:addOverride ("xi.actions.weaponskills.randgrith.onUseWeaponSkill", function
 
     if damage > 0 then
         if not target:hasStatusEffect(xi.effect.EVASION_DOWN) then
-            local duration = tp / 1000 * 20 * applyResistanceAddEffect(player, target, xi.magic.ele.ICE, 0)
+            local duration = tp / 1000 * 20 * applyResistanceAddEffect(player, target, xi.element.ICE, 0)
             target:addStatusEffect(xi.effect.EVASION_DOWN, 32, 0, duration)
         end
     end

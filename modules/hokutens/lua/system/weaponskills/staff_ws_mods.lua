@@ -21,7 +21,7 @@ staff:addOverride ("xi.actions.weaponskills.garland_of_bliss.onUseWeaponSkill", 
     params.ftp100 = 5.50 params.ftp200 = 5.50 params.ftp300 = 5.50
     params.str_wsc = 0.0 params.dex_wsc = 0.0 params.vit_wsc = 0.0 params.agi_wsc = 0.0 params.int_wsc = 0.0
     params.mnd_wsc = 0.85 params.chr_wsc = 0.0
-    params.ele = xi.magic.ele.LIGHT
+    params.ele = xi.element.LIGHT
     params.skill = xi.skill.STAFF
     params.includemab = true
 
@@ -31,7 +31,7 @@ staff:addOverride ("xi.actions.weaponskills.garland_of_bliss.onUseWeaponSkill", 
     
     if damage > 0 then
         if not target:hasStatusEffect(xi.effect.DEFENSE_DOWN) then
-            local duration = (30 + tp / 1000 * 30) * applyResistanceAddEffect(player, target, xi.magic.ele.WIND, 0)
+            local duration = (30 + tp / 1000 * 30) * applyResistanceAddEffect(player, target, xi.element.WIND, 0)
             target:addStatusEffect(xi.effect.DEFENSE_DOWN, 12.5, 0, duration)
         end
     end
@@ -63,7 +63,7 @@ staff:addOverride ("xi.actions.weaponskills.gate_of_tartarus.onUseWeaponSkill", 
 
     if damage > 0 then
         if not target:hasStatusEffect(xi.effect.ATTACK_DOWN) then
-            local duration = tp / 1000 * 3 * applyResistanceAddEffect(player, target, xi.magic.ele.WATER, 0)
+            local duration = tp / 1000 * 3 * applyResistanceAddEffect(player, target, xi.element.WATER, 0)
             target:addStatusEffect(xi.effect.ATTACK_DOWN, 20, 0, duration)
         end
     end
@@ -86,7 +86,7 @@ staff:addOverride ("xi.actions.weaponskills.omniscience.onUseWeaponSkill", funct
     params.ftp100 = 5 params.ftp200 = 5 params.ftp300 = 5
     params.str_wsc = 0.0 params.dex_wsc = 0.0 params.vit_wsc = 0.0 params.agi_wsc = 0.0 params.int_wsc = 0.0
     params.mnd_wsc = 0.75 params.chr_wsc = 0.0
-    params.ele = xi.magic.ele.DARK
+    params.ele = xi.element.DARK
     params.skill = xi.skill.STAFF
     params.includemab = true
 
@@ -177,7 +177,7 @@ staff:addOverride ("xi.actions.weaponskills.vidohunir.onUseWeaponSkill", functio
     params.ftp100 = 3.75 params.ftp200 = 3.75 params.ftp300 = 3.75
     params.str_wsc = 0.0 params.dex_wsc = 0.0 params.vit_wsc = 0.0 params.agi_wsc = 0.0 params.int_wsc = 0.85
     params.mnd_wsc = 0.0 params.chr_wsc = 0.0
-    params.ele = xi.magic.ele.DARK
+    params.ele = xi.element.DARK
     params.skill = xi.skill.STAFF
     params.includemab = true
 
