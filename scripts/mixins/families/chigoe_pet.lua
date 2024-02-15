@@ -35,22 +35,23 @@ g_mixins.families.chigoe_pet = function(hostMob)
             if not chigoe:isSpawned() then
                 chigoe:setSpawn(hostMob:getXPos() + math.random(-2, 2), hostMob:getYPos() + math.random(-2, 2), hostMob:getZPos() + math.random(-2, 2), hostMob:getRotPos())
                 chigoe:spawn()
+                chigoe:setMobMod(xi.mobMod.EXP_BONUS, -100)
 
                 chigoe:addListener('CRITICAL_TAKE', 'CHIGOE_CRITICAL_TAKE', function(chigoeMob)
-                    chigoeMob:setMobMod(xi.mobMod.EXP_BONUS, -100)
+                    --chigoeMob:setMobMod(xi.mobMod.EXP_BONUS, -100)
                     chigoeMob:setHP(0)
                 end)
 
                 chigoe:addListener('WEAPONSKILL_TAKE', 'CHIGOE_WEAPONSKILL_TAKE', function(chigoeMob, wsid)
                     if wsid then
-                        chigoeMob:setMobMod(xi.mobMod.EXP_BONUS, -100)
+                        --chigoeMob:setMobMod(xi.mobMod.EXP_BONUS, -100)
                         chigoeMob:setHP(0)
                     end
                 end)
 
                 chigoe:addListener('ABILITY_TAKE', 'CHIGOE_ABILITY_TAKE', function(chigoeMob, user, ability, action)
                     if jobAbilities[ability:getID()] then
-                        chigoeMob:setMobMod(xi.mobMod.EXP_BONUS, -100)
+                        --chigoeMob:setMobMod(xi.mobMod.EXP_BONUS, -100)
                         chigoeMob:setHP(0)
                     end
                 end)

@@ -4615,7 +4615,7 @@ xi.roe.records =
     { -- Conflict: Bhaflau Thickets
         trigger = xi.roeTrigger.DEFEAT_MOB,
         goal = 10,
-        reqs = { zone = set { 52 } },
+        reqs = { mobXP = true, zone = set { 52 } },
         flags = set { 'repeat' },
         reward = { sparks = 60, xp = 800, accolades = 6, item = { xi.item.TOWER_SHIELD } },
     },
@@ -4633,7 +4633,7 @@ xi.roe.records =
     { -- Conflict: Wajaom Woodlands
         trigger = xi.roeTrigger.DEFEAT_MOB,
         goal = 10,
-        reqs = { zone = set { 51 } },
+        reqs = { mobXP = true, zone = set { 51 } },
         flags = set { 'repeat' },
         reward = { sparks = 60, xp = 800, accolades = 6, item = { xi.item.ARACHNE_OBI } },
     },
@@ -4669,7 +4669,7 @@ xi.roe.records =
     { -- Conflict: Caedarva Mire
         trigger = xi.roeTrigger.DEFEAT_MOB,
         goal = 10,
-        reqs = { zone = set { 79 } },
+        reqs = { mobXP = true, zone = set { 79 } },
         flags = set { 'repeat' },
         reward = { sparks = 60, xp = 800, accolades = 6, item = { xi.item.TARUTARU_SASH } },
     },
