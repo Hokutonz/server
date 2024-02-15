@@ -9,3 +9,13 @@ UPDATE `abilities` SET `recastTime`=120 WHERE  `abilityId`=137;
 UPDATE `abilities` SET `recastTime`=60 WHERE  `abilityId`=322;
 # Update Haste Samba to lvl 37
 UPDATE `abilities` SET `level`='37' WHERE  `abilityId`=189;
+
+
+# Update Mana Wall to BLM75
+##UPDATE `abilities` SET `level`='75' WHERE  `abilityId`=254;
+# Update Restraint to WAR75
+##UPDATE `abilities` SET `level`='75' WHERE  `abilityId`=252;
+# Update Perfect Counter to MNK75
+##UPDATE `abilities` SET `level`='75' WHERE  `abilityId`=253;
+# Update Divine Caress to WHM75
+##UPDATE `abilities` SET `level`='75' WHERE  `abilityId`=270;
