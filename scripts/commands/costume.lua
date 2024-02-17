@@ -20,7 +20,7 @@ commandObj.onTrigger = function(player, costumeId)
     if costumeId == nil or costumeId < 0 then
         error(player, 'Invalid costumeID.')
         return
-    endh
+    end
 
     -- put on costume
     player:setCostume(costumeId)

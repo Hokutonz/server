@@ -29,7 +29,7 @@ commandObj.onTrigger = function(player, target)
     end
 
     -- add all mount key items
-    for i = xi.ki.CHOCOBO_COMPANION, xi.ki.CHOCOBO_COMPANION + 26 do
+    for i = xi.ki.CHOCOBO_COMPANION, xi.ki.IXION_COMPANION do
         targ:addKeyItem(i)
     end
 
