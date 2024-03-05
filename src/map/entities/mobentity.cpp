@@ -121,6 +121,11 @@ CMobEntity::CMobEntity()
     PEnmityContainer     = new CEnmityContainer(this);
     SpellContainer       = new CMobSpellContainer(this);
 
+    m_Weapons[SLOT_MAIN]   = new CItemWeapon(0);
+    m_Weapons[SLOT_SUB]    = new CItemWeapon(0);
+    m_Weapons[SLOT_RANGED] = new CItemWeapon(0);
+    m_Weapons[SLOT_AMMO]   = new CItemWeapon(0);
+
     PAI = std::make_unique<CAIContainer>(this, std::make_unique<CPathFind>(this), std::make_unique<CMobController>(this), std::make_unique<CTargetFind>(this));
 }
 
@@ -136,8 +141,24 @@ void CMobEntity::setEntityFlags(uint32 EntityFlags)
 
 CMobEntity::~CMobEntity()
 {
+    destroy(m_Weapons[SLOT_MAIN]);
+    destroy(m_Weapons[SLOT_SUB]);
+    destroy(m_Weapons[SLOT_RANGED]);
+    destroy(m_Weapons[SLOT_AMMO]);
     destroy(PEnmityContainer);
     destroy(SpellContainer);
+
+    if (PParty)
+    {
+        if (PParty->HasOnlyOneMember())
+        {
+            destroy(PParty);
+        }
+        else
+        {
+            PParty->DelMember(this);
+        }
+    }
 }
 
 /************************************************************************
@@ -1065,7 +1086,7 @@ void CMobEntity::OnEngage(CAttackState& state)
 {
     TracyZoneScoped;
     CBattleEntity::OnEngage(state);
-    luautils::OnMobEngaged(this, state.GetTarget());
+    luautils::OnMobEngage(this, state.GetTarget());
     unsigned int range = this->getMobMod(MOBMOD_ALLI_HATE);
     if (range != 0)
     {

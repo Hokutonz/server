@@ -136,7 +136,7 @@ namespace battleutils
     std::vector<ELEMENT> GetSkillchainMagicElement(SKILLCHAIN_ELEMENT skillchain);
 
     bool IsParalyzed(CBattleEntity* PAttacker);
-    bool IsAbsorbByShadow(CBattleEntity* PDefender);
+    bool IsAbsorbByShadow(CBattleEntity* PDefender, CBattleEntity* PAttacker);
     bool IsIntimidated(CBattleEntity* PAttacker, CBattleEntity* PDefender);
 
     int32 GetFSTR(CBattleEntity* PAttacker, CBattleEntity* PDefender, uint8 SlotID);
@@ -180,7 +180,7 @@ namespace battleutils
     bool  isValidSelfTargetWeaponskill(int wsid);
     bool  CanUseWeaponskill(CCharEntity* PChar, CWeaponSkill* PSkill);
     int16 CalculateBaseTP(int delay);
-    void  GenerateCureEnmity(CBattleEntity* PSource, CBattleEntity* PTarget, int32 amount);
+    void  GenerateCureEnmity(CBattleEntity* PSource, CBattleEntity* PTarget, int32 amount, int32 fixedCE = 0, int32 fixedVE = 0);
     void  GenerateInRangeEnmity(CBattleEntity* PSource, int16 CE, int16 VE);
 
     CItemWeapon*    GetEntityWeapon(CBattleEntity* PEntity, SLOTTYPE Slot);
