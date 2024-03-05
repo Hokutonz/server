@@ -109,8 +109,6 @@ m:addOverride("xi.zones.Ship_bound_for_Mhaura_Pirates.Zone.onZoneTick", function
 end)
 
 m:addOverride("xi.zones.Ship_bound_for_Selbina_Pirates.Zone.onZoneTick", function(zone)
-    super(zone)
-
     if
         GetServerVariable("[PIRATES]Attack") == 1 and
         os.time() >= GetServerVariable("[PIRATES]StartTime")
@@ -138,14 +136,12 @@ m:addOverride("xi.zones.Ship_bound_for_Selbina_Pirates.Zone.onZoneTick", functio
     end
 end)
 
-m:addOverride("xi.zones.Selbina.Zone.onEventFinish", function(player, csid, option)
-    super(player, csid, option)
-
+m:addOverride("xi.zones.Mhaura.Zone.onEventFinish", function(player, csid, option)
     if csid == 200 then
         local DepartureTime = VanadielHour()
 
         if DepartureTime % 8 == 0 then
-            if GetServerVariable("Mhaura_Deastination") > 89 then
+            if GetServerVariable('Mhaura_Destination') > 84 then
                 -- Set event variables
                 setPirateVariables()
                 player:setPos(0, 0, 0, 0, xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES)
@@ -158,15 +154,13 @@ m:addOverride("xi.zones.Selbina.Zone.onEventFinish", function(player, csid, opti
             player:setPos(8, -1, 5, 62, 249) -- Something went wrong, dump them on the dock for safety.
         end
     elseif csid == 322 then
-        player:setCharVar("COP_shikarees_story", 1)
+        player:setCharVar('COP_shikarees_story', 1)
     end
 end)
 
-m:addOverride("xi.zones.Mhaura.Zone.onEventFinish", function(player, csid, option)
-    super(player, csid, option)
-
+m:addOverride("xi.zones.Selbina.Zone.onEventFinish", function(player, csid, option)
     if csid == 200 then
-        if GetServerVariable("Selbina_Deastination") > 89 then
+        if GetServerVariable('Selbina_Destination') > 84 then
             -- Set event variables
             setPirateVariables()
             player:setPos(0, 0, 0, 0, xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES)
@@ -175,7 +169,7 @@ m:addOverride("xi.zones.Mhaura.Zone.onEventFinish", function(player, csid, optio
         end
     elseif
         csid == 1101 and
-        npcUtil.completeQuest(player, xi.quest.log_id.OUTLANDS, xi.quest.id.outlands.I_LL_TAKE_THE_BIG_BOX, { item = 14226, fameArea = xi.quest.fame_area.NORG, var = { "Enagakure_Killed", "illTakeTheBigBoxCS" } })
+        npcUtil.completeQuest(player, xi.quest.log_id.OUTLANDS, xi.quest.id.outlands.I_LL_TAKE_THE_BIG_BOX, { item = 14226, fameArea = xi.quest.fame_area.NORG, var = { 'Enagakure_Killed', 'illTakeTheBigBoxCS' } })
     then
         player:delKeyItem(xi.ki.SEANCE_STAFF)
     end
@@ -185,19 +179,11 @@ end)
 m:addOverride("xi.zones.Ship_bound_for_Mhaura_Pirates.Zone.onEventFinish", function(player, csid, option)
     super(player, csid, option)
 
-    if csid == 512 then
-        player:setPos(0, 0, 0, 0, xi.zone.MHAURA)
-    end
-
     despawnPirates()
 end)
 
 m:addOverride("xi.zones.Ship_bound_for_Selbina_Pirates.Zone.onEventFinish", function(player, csid, option)
     super(player, csid, option)
-
-    if csid == 255 then
-        player:setPos(0, 0, 0, 0, xi.zone.SELBINA)
-    end
 
     despawnPirates()
 end)

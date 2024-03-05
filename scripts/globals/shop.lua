@@ -230,8 +230,8 @@ xi.shop =
             790,     8000,   xi.craftRank.APPRENTICE,      -- Garnet
             808,     8000,   xi.craftRank.APPRENTICE,      -- Goshenite
             811,     8000,   xi.craftRank.APPRENTICE,      -- Ametrine
-            784,     8000,   xi.craftRank.APPRENTICE,      -- Jadeite
-            812,     8000,   xi.craftRank.APPRENTICE,      -- Deathstone
+            --784,    45000,   xi.craftRank.APPRENTICE,      -- Jadeite
+            --812,    40000,   xi.craftRank.APPRENTICE,      -- Deathstone
             798,     8000,   xi.craftRank.APPRENTICE,      -- Turquoise
             815,     8000,   xi.craftRank.APPRENTICE,      -- Sphene
             793,     8000,   xi.craftRank.APPRENTICE,      -- Black Pearl
