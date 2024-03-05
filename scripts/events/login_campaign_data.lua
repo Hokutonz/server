@@ -46,22 +46,22 @@ local prizes =
             -- 3706, -- Vanaclock
 
             -- Cycle #2
-            267, -- Fafnir Statue
-            268, -- N moogle Statue
-            269, -- S lord Statue
-            270, -- Odin Statue
-            271, -- Alexander Statue
-            277, -- Prishe Statue
-            278, -- Cardian Statue
+            -- 267, -- Fafnir Statue
+            -- 268, -- N moogle Statue
+            -- 269, -- S lord Statue
+            -- 270, -- Odin Statue
+            -- 271, -- Alexander Statue
+            -- 277, -- Prishe Statue
+            -- 278, -- Cardian Statue
 
             -- Cycle #3
-            --  279, -- S Lord Statue II
-            --  280, -- S Lord Statue III
-            --  281, -- Atomos Statue
-            --  284, -- Goobbue Statue
-            --  286, -- Nanaa Mihgo Statue
-            --  287, -- Nanaa Mihgo S II
-            --  320, -- Harpsichord
+             279, -- S Lord Statue II
+             280, -- S Lord Statue III
+             281, -- Atomos Statue
+             284, -- Goobbue Statue
+             286, -- Nanaa Mihgo Statue
+             287, -- Nanaa Mihgo S II
+             320, -- Harpsichord
 
             -- Cycle #4
             --    365,  -- Poele Classique
@@ -116,40 +116,39 @@ local prizes =
             --  27911, -- Chocobo Suit
 
             -- Cycle #2
-            11491, -- Snow Bunny Hat +1
-            23730, -- Karakul Cap
-            25585, -- Bl. Chocobo Cap
-            25606, -- Agent Hood
-            25756, -- Wyrmking Suit
-            25657, -- Wyrmking Masque
-            25776, -- Bl. Chocobo Suit
-            25850, -- Pink Subligar
-            26514, -- Poroggo Fleece
-            26974, -- Agent Coat
-            27111, -- Agent Cuffs
-            27296, -- Agent Pants
-            27467, -- Agent Boots
-            27717, -- Worm Masque
+            -- 11491, -- Snow Bunny Hat +1
+            -- 23730, -- Karakul Cap
+            -- 25585, -- Bl. Chocobo Cap
+            -- 25606, -- Agent Hood
+            -- 25756, -- Wyrmking Suit
+            -- 25657, -- Wyrmking Masque
+            -- 25776, -- Bl. Chocobo Suit
+            -- 26514, -- Poroggo Fleece
+            -- 26974, -- Agent Coat
+            -- 27111, -- Agent Cuffs
+            -- 27296, -- Agent Pants
+            -- 27467, -- Agent Boots
+            -- 27717, -- Worm Masque
 
             -- Cycle #3
-            -- 11812, -- Charity Cap
-            -- 25639, -- Korrigan Masque
-            -- 25645, -- Kupo Masque
-            -- 25715, -- Korrigan Suit
-            -- 25726, -- Kupo Suit
-            -- 25774, -- Fancy Gilet
-            -- 25775, -- Fancy Top
-            -- 25838, -- Fancy Trunks
-            -- 25839, -- Fancy Shorts
-            -- 26707, -- Flan Masque
-            -- 26717, -- Cait Sith Cap
-            -- 26719, -- Sheep Cap
-            -- 26738, -- Leafkin Cap
-            -- 26789, -- Shobuhouou Kabuto
-            -- 26946, -- Pupil's Shirt
-            -- 26964, -- Pupil's Camisa
-            -- 27281, -- Pupil's Trousers
-            -- 27455, -- Pupil's Shoes
+            11812, -- Charity Cap
+            25639, -- Korrigan Masque
+            25645, -- Kupo Masque
+            25715, -- Korrigan Suit
+            25726, -- Kupo Suit
+            25774, -- Fancy Gilet
+            25775, -- Fancy Top
+            25838, -- Fancy Trunks
+            25839, -- Fancy Shorts
+            26707, -- Flan Masque
+            26717, -- Cait Sith Cap
+            26719, -- Sheep Cap
+            26738, -- Leafkin Cap
+            26789, -- Shobuhouou Kabuto
+            26946, -- Pupil's Shirt
+            26964, -- Pupil's Camisa
+            27281, -- Pupil's Trousers
+            27455, -- Pupil's Shoes
 
             -- Cycle #4
             -- 25649, -- Gazer's Helmet
@@ -280,45 +279,45 @@ local prizes =
             -- 28661, -- Glinting Shield
 
             -- Cycle #2
-            18102, -- Pitchfork
-            18441, -- Shinai
-            18864, -- Dream Bell +1
-            20532, -- Worm Feelers
-            20577, -- Chicken Knife II
-            20713, -- Excalipoor
-            20909, -- Hoe
-            21107, -- Kyuka Uchiwa
-            21658, -- Brave Blade II
-            21770, -- Helgoland
-            21863, -- Tzee Xicu's Blade
-            21967, -- Melon Slicer
-            22017, -- Seika Uchiwa
-            22069, -- Hapy Staff
-            22072, -- Lamia Staff
-            27625, -- Morbol Shield
-            27631, -- Cait Sith Guard
-            28652, -- Hatchling Shield
-            28655, -- Slime Shield
+            -- 18102, -- Pitchfork
+            -- 18441, -- Shinai
+            -- 18864, -- Dream Bell +1
+            -- 20532, -- Worm Feelers
+            -- 20577, -- Chicken Knife II
+            -- 20713, -- Excalipoor
+            -- 20909, -- Hoe
+            -- 21107, -- Kyuka Uchiwa
+            -- 21658, -- Brave Blade II
+            -- 21770, -- Helgoland
+            -- 21863, -- Tzee Xicu's Blade
+            -- 21967, -- Melon Slicer
+            -- 22017, -- Seika Uchiwa
+            -- 22069, -- Hapy Staff
+            -- 22072, -- Lamia Staff
+            -- 27625, -- Morbol Shield
+            -- 27631, -- Cait Sith Guard
+            -- 28652, -- Hatchling Shield
+            -- 28655, -- Slime Shield
 
             -- Cycle #3
-            --  10808, -- Janus Guard
-            --  10811, -- Chocobo Shield
-            --  18464, -- Ark Tachi
-            --  18545, -- Ark Tabar
-            --  18563, -- Ark Scythe
-            --  18912, -- Ark Saber
-            --  18913, -- Ark Sword
-            --  20573, -- Aern Dagger
-            --  20674, -- Aern Sword
-            --  20953, -- Escritorio
-            --  21509, -- Premium Mogti
-            --  21682, -- Lament
-            --  21742, -- Aern Axe
-            --  21759, -- Autarch's Axe
-            --  21860, -- Aern Spear
-            --  22004, -- Soulflayer's Wand
-            --  22065, -- Aern Staff
-            --  26489, -- Troth
+             10808, -- Janus Guard
+             10811, -- Chocobo Shield
+             18464, -- Ark Tachi
+             18545, -- Ark Tabar
+             18563, -- Ark Scythe
+             18912, -- Ark Saber
+             18913, -- Ark Sword
+             20573, -- Aern Dagger
+             20674, -- Aern Sword
+             20953, -- Escritorio
+             21509, -- Premium Mogti
+             21682, -- Lament
+             21742, -- Aern Axe
+             21759, -- Autarch's Axe
+             21860, -- Aern Spear
+             22004, -- Soulflayer's Wand
+             22065, -- Aern Staff
+             26489, -- Troth
 
             -- Cycle #4
             -- 10809, -- Moogle Guard
@@ -384,16 +383,16 @@ local prizes =
             --10077, -- ♪Buffalo
 
             -- Cycle #2
-            10056, -- ♪Crawler
-            10058, -- ♪Beetle
-            10060, -- ♪Magic Pot
-            10052, -- ♪Red Crab
+            -- 10056, -- ♪Crawler
+            -- 10058, -- ♪Beetle
+            -- 10060, -- ♪Magic Pot
+            -- 10052, -- ♪Red Crab
             
             -- Cycle #3
-            --10061, -- ♪Tulfaire
-            --10062, -- ♪Warmachine
-            --10063, -- ♪Xzomit
-            --10076, -- ♪Golden Bomb
+            10061, -- ♪Tulfaire
+            10062, -- ♪Warmachine
+            10063, -- ♪Xzomit
+            10076, -- ♪Golden Bomb
             
             -- Cycle #4
             --10064, -- ♪Hippogryph
@@ -441,22 +440,22 @@ local prizes =
             -- 831,  -- Shining Cloth
 
             -- Cycle #2
-            862,  -- Behemoth Leather
-            1312, -- Angel Skin
-            1313, -- Siren's Hair
-            1409, -- Siren's Macrame
-            1714, -- Cashmere Cloth
-            2169, -- Cerberus Hide
-            2371, -- Khimaira Horn
+            -- 862,  -- Behemoth Leather
+            -- 1312, -- Angel Skin
+            -- 1313, -- Siren's Hair
+            -- 1409, -- Siren's Macrame
+            -- 1714, -- Cashmere Cloth
+            -- 2169, -- Cerberus Hide
+            -- 2371, -- Khimaira Horn
 
             -- Cycle #3
-            -- 655,  -- Adaman Ingot
-            -- 836,  -- Damascene Cloth
-            -- 837,  -- Malboro Fiber
-            -- 1133, -- Dragon Blood
-            -- 1289, -- Burning Hakutaku Eye
-            -- 1446, -- Lacquer Tree Log
-            -- 2001, -- Dark Adaman Sheet
+            655,  -- Adaman Ingot
+            836,  -- Damascene Cloth
+            837,  -- Malboro Fiber
+            1133, -- Dragon Blood
+            1289, -- Burning Hakutaku Eye
+            1446, -- Lacquer Tree Log
+            2001, -- Dark Adaman Sheet
 
             -- Cycle #4
             -- 2152, -- Marid Leather
@@ -510,14 +509,13 @@ local prizes =
         ['items'] =
         {
             -- Cycle #1/4
-            10113, -- Cipher: Lion
-            10118, -- Cipher: Naja
-            10170, -- Cipher: Nashmeira II
+            -- 10113, -- Cipher: Lion
+            -- 10118, -- Cipher: Naja
+            -- 10170, -- Cipher: Nashmeira II
 
             -- Cycle #2/5
-            -- 10136, -- Cipher: Uka
-            -- 10145, -- Cipher: Rughadjeen
-            -- 10145, -- Cipher: Rughadjeen
+            10136, -- Cipher: Uka
+            10145, -- Cipher: Rughadjeen
 
             -- Cycle #3/6
             -- 10133, -- Cipher: F. Coffin

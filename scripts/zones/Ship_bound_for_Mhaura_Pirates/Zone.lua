@@ -21,6 +21,9 @@ zoneObject.onZoneIn = function(player, prevZone)
     return cs
 end
 
+zoneObject.onZoneTick = function(zone)
+end
+
 zoneObject.onTransportEvent = function(player, transport)
     player:startEvent(512)
 end
