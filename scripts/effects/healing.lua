@@ -64,11 +64,13 @@ effectObject.onEffectTick = function(target, effect)
             not target:hasStatusEffect(xi.effect.CURSE_II)
         then
             local healHP = 0
+            local healMP = 12
+            local level = target:getMainLvl()
             if
                 target:getContinentID() == 1 and
                 target:hasStatusEffect(xi.effect.SIGNET)
             then
-                healHP = 10 + (3 * math.floor(target:getMainLvl() / 10)) + (healtime - 2) * (1 + math.floor(target:getMaxHP() / 300)) + target:getMod(xi.mod.HPHEAL)
+                healHP = 10 + (3 * math.floor(level / 10)) + (healtime - 2) * (1 + math.floor(target:getMaxHP() / 300)) + target:getMod(xi.mod.HPHEAL)
             else
                 target:addTP(xi.settings.main.HEALING_TP_CHANGE)
                 healHP = 10 + (healtime - 2) + target:getMod(xi.mod.HPHEAL)
@@ -84,9 +86,11 @@ effectObject.onEffectTick = function(target, effect)
                 xi.roe.onRecordTrigger(target, 4)
             end
 
+            healHP = healHP + (level * 2)
+            healMP = healMP + math.floor(level / 2)
             target:addHPLeaveSleeping(healHP)
             target:updateEnmityFromCure(target, healHP)
-            target:addMP(12 + ((healtime - 2) * (1 + target:getMod(xi.mod.CLEAR_MIND))) + target:getMod(xi.mod.MPHEAL))
+            target:addMP(healMP + ((healtime - 2) * (1 + target:getMod(xi.mod.CLEAR_MIND))) + target:getMod(xi.mod.MPHEAL))
         end
     end
 end
