@@ -33,6 +33,7 @@ entity.onTrigger = function(player, npc)
         --4614, 141137,    -- Cure VI
         --4655, 125000,    -- Protect V
         --4660, 125000,    -- Shell V
+        4717,  75000,    -- Refresh
         5103, 250000,    -- Crusade
     }
 
