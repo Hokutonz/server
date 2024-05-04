@@ -21,10 +21,15 @@ UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000',
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928224;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928225;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928245;
+UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928246;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928252;
+UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928253;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928254;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928255;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928256;
+UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928257;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928264;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928265;
+UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928266;
 UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928275;
+UPDATE `xidb`.`npc_list` SET `pos_rot`='0', `pos_x`='-126.000', `pos_y`='0.000', `pos_z`='0.000' WHERE  `npcid`=17928276;
