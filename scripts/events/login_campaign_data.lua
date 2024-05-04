@@ -55,30 +55,30 @@ local prizes =
             -- 278, -- Cardian Statue
 
             -- Cycle #3
-             279, -- S Lord Statue II
-             280, -- S Lord Statue III
-             281, -- Atomos Statue
-             284, -- Goobbue Statue
-             286, -- Nanaa Mihgo Statue
-             287, -- Nanaa Mihgo S II
-             320, -- Harpsichord
+            --  279, -- S Lord Statue II
+            --  280, -- S Lord Statue III
+            --  281, -- Atomos Statue
+            --  284, -- Goobbue Statue
+            --  286, -- Nanaa Mihgo Statue
+            --  287, -- Nanaa Mihgo S II
+            --  320, -- Harpsichord
 
             -- Cycle #4
-            --    365,  -- Poele Classique
-            --    366,  -- Kanonenofen
-            --    367,  -- Pot Topper
-            --    415,  -- Aldebaran Horn
-            --    426,  -- Orchestrion
-            --    3585, -- Galley Kitchen
-            --    3652, -- Memorial Cake
+               -- 365,  -- Poele Classique
+               -- 366,  -- Kanonenofen
+               -- 367,  -- Pot Topper
+               -- 415,  -- Aldebaran Horn
+               -- 426,  -- Orchestrion
+               -- 3585, -- Galley Kitchen
+               -- 3652, -- Memorial Cake
 
             -- Cycle # 5
-            -- 88,   -- Timepiece
-            -- 3679, -- Beastman Gonfalon
-            -- 3681, -- Alzadaal Table
-            -- 3698, -- Cherry Tree
-            -- 3705, -- Far East Hearth
-            -- 3717, -- Birch Tree
+            88,   -- Timepiece
+            3679, -- Beastman Gonfalon
+            3681, -- Alzadaal Table
+            3698, -- Cherry Tree
+            3705, -- Far East Hearth
+            3717, -- Birch Tree
 
             -- Cycle # 6
             -- 195,  -- The Big One
@@ -131,24 +131,24 @@ local prizes =
             -- 27717, -- Worm Masque
 
             -- Cycle #3
-            11812, -- Charity Cap
-            25639, -- Korrigan Masque
-            25645, -- Kupo Masque
-            25715, -- Korrigan Suit
-            25726, -- Kupo Suit
-            25774, -- Fancy Gilet
-            25775, -- Fancy Top
-            25838, -- Fancy Trunks
-            25839, -- Fancy Shorts
-            26707, -- Flan Masque
-            26717, -- Cait Sith Cap
-            26719, -- Sheep Cap
-            26738, -- Leafkin Cap
-            26789, -- Shobuhouou Kabuto
-            26946, -- Pupil's Shirt
-            26964, -- Pupil's Camisa
-            27281, -- Pupil's Trousers
-            27455, -- Pupil's Shoes
+            -- 11812, -- Charity Cap
+            -- 25639, -- Korrigan Masque
+            -- 25645, -- Kupo Masque
+            -- 25715, -- Korrigan Suit
+            -- 25726, -- Kupo Suit
+            -- 25774, -- Fancy Gilet
+            -- 25775, -- Fancy Top
+            -- 25838, -- Fancy Trunks
+            -- 25839, -- Fancy Shorts
+            -- 26707, -- Flan Masque
+            -- 26717, -- Cait Sith Cap
+            -- 26719, -- Sheep Cap
+            -- 26738, -- Leafkin Cap
+            -- 26789, -- Shobuhouou Kabuto
+            -- 26946, -- Pupil's Shirt
+            -- 26964, -- Pupil's Camisa
+            -- 27281, -- Pupil's Trousers
+            -- 27455, -- Pupil's Shoes
 
             -- Cycle #4
             -- 25649, -- Gazer's Helmet
@@ -172,25 +172,25 @@ local prizes =
             -- 28324, -- Alliance Boots
 
             -- Cycle #5
-            -- 10446, -- Ahriman Cap
-            -- 10875, -- Snowman Cap
-            -- 23731, -- Royal Chocobo Beret
-            -- 23753, -- Sandogasa
-            -- 23790, -- Adenium Masque
-            -- 23791, -- Adenium Suit
-            -- 25604, -- Buffalo Cap
-            -- 25648, -- Curmudgeon's Helmet
-            -- 25670, -- Rarab Cap
-            -- 25672, -- Snoll Masque
-            -- 25677, -- Arthro's Cap
-            -- 25910, -- Cait Sith Subligar
-            -- 26520, -- Akitu Shirt
-            -- 26693, -- Morbol Cap
-            -- 26703, -- Lycopodium Masque
-            -- 26729, -- Corolla
-            -- 27716, -- Green Moogle Masque
-            -- 27757, -- Bomb Masque
-            -- 27867, -- Green Moogle Suit
+            10446, -- Ahriman Cap
+            10875, -- Snowman Cap
+            23731, -- Royal Chocobo Beret
+            23753, -- Sandogasa
+            23790, -- Adenium Masque
+            23791, -- Adenium Suit
+            25604, -- Buffalo Cap
+            25648, -- Curmudgeon's Helmet
+            25670, -- Rarab Cap
+            25672, -- Snoll Masque
+            25677, -- Arthro's Cap
+            25910, -- Cait Sith Subligar
+            26520, -- Akitu Shirt
+            26693, -- Morbol Cap
+            26703, -- Lycopodium Masque
+            26729, -- Corolla
+            27716, -- Green Moogle Masque
+            27757, -- Bomb Masque
+            27867, -- Green Moogle Suit
 
             -- Cycle #6 (Costumes)
             -- 5113,  -- Cracked Nut
@@ -258,25 +258,25 @@ local prizes =
             -- WEAPON COSTUMES and crafting latent items
 
             -- Cycle #1
-            -- 20514, -- Aphelion Knuckles
-            -- 20578, -- Wind Knife
-            -- 20665, -- Kam'lanaut's Sword
-            -- 20694, -- Fermion Sword
-            -- 21693, -- Irradiance Blade
-            -- 21741, -- Demonic Axe
-            -- 21745, -- Dullahan Axe
-            -- 21820, -- Lost Sickle
-            -- 21862, -- Mizukage Naginata
-            -- 21977, -- Mutsonokami -- BROKEN
-            -- 22005, -- Burrower's Wand
-            -- 22019, -- Jingly Rod
-            -- 22067, -- Levin
-            -- 22124, -- Artemis's Bow
-            -- 22153, -- Silver Gun
-            -- 22282, -- Grudge
-            -- 22283, -- Marvelous Cheer
-            -- 26412, -- Kam'lanaut's Shield
-            -- 28661, -- Glinting Shield
+            20514, -- Aphelion Knuckles
+            20578, -- Wind Knife
+            20665, -- Kam'lanaut's Sword
+            20694, -- Fermion Sword
+            21693, -- Irradiance Blade
+            21741, -- Demonic Axe
+            21745, -- Dullahan Axe
+            21820, -- Lost Sickle
+            21862, -- Mizukage Naginata
+            21977, -- Mutsonokami -- BROKEN
+            22005, -- Burrower's Wand
+            22019, -- Jingly Rod
+            22067, -- Levin
+            22124, -- Artemis's Bow
+            22153, -- Silver Gun
+            22282, -- Grudge
+            22283, -- Marvelous Cheer
+            26412, -- Kam'lanaut's Shield
+            28661, -- Glinting Shield
 
             -- Cycle #2
             -- 18102, -- Pitchfork
@@ -300,24 +300,24 @@ local prizes =
             -- 28655, -- Slime Shield
 
             -- Cycle #3
-             10808, -- Janus Guard
-             10811, -- Chocobo Shield
-             18464, -- Ark Tachi
-             18545, -- Ark Tabar
-             18563, -- Ark Scythe
-             18912, -- Ark Saber
-             18913, -- Ark Sword
-             20573, -- Aern Dagger
-             20674, -- Aern Sword
-             20953, -- Escritorio
-             21509, -- Premium Mogti
-             21682, -- Lament
-             21742, -- Aern Axe
-             21759, -- Autarch's Axe
-             21860, -- Aern Spear
-             22004, -- Soulflayer's Wand
-             22065, -- Aern Staff
-             26489, -- Troth
+            --  10808, -- Janus Guard
+            --  10811, -- Chocobo Shield
+            --  18464, -- Ark Tachi
+            --  18545, -- Ark Tabar
+            --  18563, -- Ark Scythe
+            --  18912, -- Ark Saber
+            --  18913, -- Ark Sword
+            --  20573, -- Aern Dagger
+            --  20674, -- Aern Sword
+            --  20953, -- Escritorio
+            --  21509, -- Premium Mogti
+            --  21682, -- Lament
+            --  21742, -- Aern Axe
+            --  21759, -- Autarch's Axe
+            --  21860, -- Aern Spear
+            --  22004, -- Soulflayer's Wand
+            --  22065, -- Aern Staff
+            --  26489, -- Troth
 
             -- Cycle #4
             -- 10809, -- Moogle Guard
@@ -389,22 +389,22 @@ local prizes =
             -- 10052, -- ♪Red Crab
             
             -- Cycle #3
-            10061, -- ♪Tulfaire
-            10062, -- ♪Warmachine
-            10063, -- ♪Xzomit
-            10076, -- ♪Golden Bomb
+            -- 10061, -- ♪Tulfaire
+            -- 10062, -- ♪Warmachine
+            -- 10063, -- ♪Xzomit
+            -- 10076, -- ♪Golden Bomb
             
             -- Cycle #4
-            --10064, -- ♪Hippogryph
-            --10066, -- ♪Spheroid
-            --10068, -- ♪Coeurl
-            --10075, -- ♪Red Raptor
+            -- 10064, -- ♪Hippogryph
+            -- 10066, -- ♪Spheroid
+            -- 10068, -- ♪Coeurl
+            -- 10075, -- ♪Red Raptor
             
             -- Cycle #5
-            --10069, -- ♪Goobbue
-            --10070, -- ♪Raaz
-            --10072, -- ♪Adamantoise
-            --10079, -- ♪Iron Giant
+            10069, -- ♪Goobbue
+            10070, -- ♪Raaz
+            10072, -- ♪Adamantoise
+            10079, -- ♪Iron Giant
             
             -- Cycle #6
             --10073, -- ♪Dhalmel
@@ -449,13 +449,13 @@ local prizes =
             -- 2371, -- Khimaira Horn
 
             -- Cycle #3
-            655,  -- Adaman Ingot
-            836,  -- Damascene Cloth
-            837,  -- Malboro Fiber
-            1133, -- Dragon Blood
-            1289, -- Burning Hakutaku Eye
-            1446, -- Lacquer Tree Log
-            2001, -- Dark Adaman Sheet
+            -- 655,  -- Adaman Ingot
+            -- 836,  -- Damascene Cloth
+            -- 837,  -- Malboro Fiber
+            -- 1133, -- Dragon Blood
+            -- 1289, -- Burning Hakutaku Eye
+            -- 1446, -- Lacquer Tree Log
+            -- 2001, -- Dark Adaman Sheet
 
             -- Cycle #4
             -- 2152, -- Marid Leather
@@ -466,12 +466,12 @@ local prizes =
             -- 4272, -- Dragon Meat
 
             -- Cycle #5
-            -- 730,  -- Bloodwood Lumber
-            -- 866,  -- Wyvern Scales
-            -- 867,  -- Dragon Scales
-            -- 901,  -- Venomous Claw
-            -- 903,  -- Dragon Talon
-            -- 908,  -- Adamantoise Shell
+             730,  -- Bloodwood Lumber
+             866,  -- Wyvern Scales
+             867,  -- Dragon Scales
+             901,  -- Venomous Claw
+             903,  -- Dragon Talon
+             908,  -- Adamantoise Shell
 
             -- Cycle #6
             -- 1110, -- Beetle Blood
@@ -514,13 +514,18 @@ local prizes =
             -- 10170, -- Cipher: Nashmeira II
 
             -- Cycle #2/5
-            10136, -- Cipher: Uka
-            10145, -- Cipher: Rughadjeen
+            -- 10136, -- Cipher: Uka
+            -- 10145, -- Cipher: Rughadjeen
 
             -- Cycle #3/6
             -- 10133, -- Cipher: F. Coffin
             -- 10193, -- Cipher: Monberaux
             -- 10168, -- Cipher: Prishe II
+			
+			--Cycle #4
+			10135, -- Cipher: Mumor
+			10140, -- Cipher: Koru-Moru
+            10120, -- Cipher: Lehko
         },
     },
 }
