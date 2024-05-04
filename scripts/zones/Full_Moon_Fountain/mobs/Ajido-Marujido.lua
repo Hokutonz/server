@@ -20,8 +20,12 @@ local function ajidoSelectTarget(mobArg)
         end
     end
 
-    local target = livingMobs[math.random(1, #livingMobs)]
-    if not target:isDead() then
+    local target = nil
+    if #livingMobs > 0 then
+        target = livingMobs[math.random(1, #livingMobs)]
+    end
+
+    if target and not target:isDead() then
         mobArg:addEnmity(target, 0, 1)
     end
 
@@ -53,7 +57,7 @@ end
 entity.onMobRoam = function(mob)
 end
 
-entity.onMobEngaged = function(mob, target)
+entity.onMobEngage = function(mob, target)
     mob:setMobMod(xi.mobMod.TELEPORT_TYPE, 0)
 end
 
