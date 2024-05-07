@@ -51,40 +51,27 @@ zones[xi.zone.YUHTUNGA_JUNGLE] =
         NO_COMBINATION                = 7880,  -- You were unable to enter a combination.
         UNITY_WANTED_BATTLE_INTERACT  = 7942,  -- Those who have accepted % must pay # Unity accolades to participate. The content for this Wanted battle is #. [Ready to begin?/You do not have the appropriate object set, so your rewards will be limited.]
         REGIME_REGISTERED             = 10058, -- New training regime registered!
-        COMMON_SENSE_SURVIVAL         = 12052, -- It appears that you have arrived at a new survival guide provided by the Adventurers' Mutual Aid Network. Common sense dictates that you should now be able to teleport here from similar tomes throughout the world.
+        COMMON_SENSE_SURVIVAL         = 12053, -- It appears that you have arrived at a new survival guide provided by the Adventurers' Mutual Aid Network. Common sense dictates that you should now be able to teleport here from similar tomes throughout the world.
     },
     mob =
     {
-        MISCHIEVOUS_MICHOLAS_PH =
-        {
-            [17281148] = 17281149, -- -265.616 -0.5 -24.389
-        },
-        TIPHA                   = 17281030,
-        CARTHI                  = 17281031,
-        ROSE_GARDEN_PH          = 17281356,
-        ROSE_GARDEN             = 17281357,
-        VOLUPTUOUS_VILMA        = 17281358,
-        NASUS_OFFSET            = 17281491,
-        SIREN                   = GetFirstID('Siren'),
+        MISCHIEVOUS_MICHOLAS = GetFirstID('Mischievous_Micholas'),
+        TIPHA                = GetFirstID('Tipha'),
+        CARTHI               = GetFirstID('Carthi'),
+        PYUU_THE_SPATEMAKER  = GetFirstID('Pyuu_the_Spatemaker'),
+        ROSE_GARDEN          = GetFirstID('Rose_Garden'),
+        VOLUPTUOUS_VILMA     = GetFirstID('Voluptuous_Vilma'),
+        NASUS_OFFSET         = GetFirstID('Nasus'),
+        SIREN                = GetFirstID('Siren'),
     },
     npc =
     {
-        BLUE_RAFFLESIA_OFFSET = 17281586,
-        TUNING_OUT_QM         = 17281590, -- qm2 in npc_list
-        OVERSEER_BASE         = GetFirstID('Zorchorevi_RK'),
-        CERMET_HEADSTONE      = 17281625,
-        PEDDLESTOX            = 17281640,
-        BEASTMEN_TREASURE     =
-        {
-            17281643, -- qm3
-            17281644, -- qm4
-            17281645, -- qm5
-            17281646, -- qm6
-            17281647, -- qm7
-            17281648, -- qm8
-            17281649, -- qm9
-            17281650, -- qm10
-        },
+        BLUE_RAFFLESIA_OFFSET    = GetFirstID('Blue_Rafflesia'),
+        TUNING_OUT_QM            = GetFirstID('qm2'),
+        OVERSEER_BASE            = GetFirstID('Zorchorevi_RK'),
+        CERMET_HEADSTONE         = GetFirstID('Cermet_Headstone'),
+        PEDDLESTOX               = GetFirstID('Peddlestox'),
+        BEASTMEN_TREASURE_OFFSET = GetFirstID('qm3'),
 
         HARVESTING = GetTableOfIDs('Harvesting_Point'),
         LOGGING    = GetTableOfIDs('Logging_Point'),

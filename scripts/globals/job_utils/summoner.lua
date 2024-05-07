@@ -35,6 +35,83 @@ local function getBaseMPCost(player, ability)
         [xi.jobAbility.TIDAL_ROAR]       = 138,
         [xi.jobAbility.SPINNING_DIVE]    = 164,
         [xi.jobAbility.GRAND_FALL]       = 182,
+        -- Garuda
+        [xi.jobAbility.CLAW]             =   7,
+        [xi.jobAbility.AERO_II]          =  24,
+        [xi.jobAbility.AERIAL_ARMOR]     =  92,
+        [xi.jobAbility.FLEET_WIND]       = 114,
+        [xi.jobAbility.AERO_IV]          = 118,
+        [xi.jobAbility.WHISPERING_WIND]  = 119,
+        [xi.jobAbility.HASTEGA]          = 129,
+        [xi.jobAbility.PREDATOR_CLAWS]   = 164,
+        [xi.jobAbility.WIND_BLADE]       = 182,
+        [xi.jobAbility.HASTEGA_II]       = 248,
+        -- Titan
+        [xi.jobAbility.ROCK_THROW]       =  10,
+        [xi.jobAbility.STONE_II]         =  24,
+        [xi.jobAbility.ROCK_BUSTER]      =  39,
+        [xi.jobAbility.MEGALITH_THROW]   =  62,
+        [xi.jobAbility.EARTHEN_WARD]     =  92,
+        [xi.jobAbility.STONE_IV]         = 118,
+        [xi.jobAbility.CRAG_THROW]       = 124,
+        [xi.jobAbility.EARTHEN_ARMOR]    = 156,
+        [xi.jobAbility.MOUNTAIN_BUSTER]  = 164,
+        [xi.jobAbility.GEOCRUSH]         = 182,
+        -- Titan
+        [xi.jobAbility.PUNCH]            =   9,
+        [xi.jobAbility.FIRE_II]          =  24,
+        [xi.jobAbility.BURNING_STRIKE]   =  48,
+        [xi.jobAbility.DOUBLE_PUNCH]     =  56,
+        [xi.jobAbility.INFERNO_HOWL]     =  72,
+        [xi.jobAbility.CRIMSON_HOWL]     =  84,
+        [xi.jobAbility.FIRE_IV]          = 118,
+        [xi.jobAbility.CONFLAG_STRIKE]   = 141,
+        [xi.jobAbility.FLAMING_CRUSH]    = 164,
+        [xi.jobAbility.METEOR_STRIKE]    = 182,
+        -- Fenrir
+        [xi.jobAbility.MOONLIT_CHARGE]   =  17,
+        [xi.jobAbility.CRESCENT_FANG]    =  19,
+        [xi.jobAbility.LUNAR_ROAR]       =  27,
+        [xi.jobAbility.LUNAR_CRY]        =  41,
+        [xi.jobAbility.ECLIPTIC_GROWL]   =  46,
+        [xi.jobAbility.ECLIPTIC_HOWL]    =  57,
+        [xi.jobAbility.HEAVENWARD_HOWL]  =  96,
+        [xi.jobAbility.ECLIPSE_BITE]     = 109,
+        [xi.jobAbility.LUNAR_BAY]        = 174,
+        [xi.jobAbility.IMPACT]           = 222,
+        -- Shiva
+        [xi.jobAbility.AXE_KICK]         =  10,
+        [xi.jobAbility.BLIZZARD_II]      =  24,
+        [xi.jobAbility.SLEEPGA]          =  56,
+        [xi.jobAbility.FROST_ARMOR]      =  63,
+        [xi.jobAbility.DOUBLE_SLAP]      =  96,
+        [xi.jobAbility.BLIZZARD_IV]      = 118,
+        [xi.jobAbility.DIAMOND_STORM]    = 138,
+        [xi.jobAbility.RUSH]             = 164,
+        [xi.jobAbility.HEAVENLY_STRIKE]  = 182,
+        [xi.jobAbility.CRYSTAL_BLESSING] = 201,
+        -- Ramuh
+        [xi.jobAbility.SHOCK_STRIKE]     =   6,
+        [xi.jobAbility.THUNDER_II]       =  24,
+        [xi.jobAbility.THUNDERSPARK]     =  38,
+        [xi.jobAbility.ROLLING_THUNDER]  =  52,
+        [xi.jobAbility.SHOCK_SQUALL]     =  67,
+        [xi.jobAbility.LIGHTNING_ARMOR]  =  91,
+        [xi.jobAbility.THUNDER_IV]       = 118,
+        [xi.jobAbility.CHAOTIC_STRIKE]   = 164,
+        [xi.jobAbility.THUNDERSTORM]     = 182,
+        [xi.jobAbility.VOLT_STRIKE]      = 229,
+        -- Diabolos
+        [xi.jobAbility.CAMISADO]         =  20,
+        [xi.jobAbility.ULTIMATE_TERROR]  =  27,
+        [xi.jobAbility.SOMNOLENCE]       =  30,
+        [xi.jobAbility.NIGHTMARE]        =  42,
+        [xi.jobAbility.NOCTOSHIELD]      =  92,
+        [xi.jobAbility.NETHER_BLAST]     = 109,
+        [xi.jobAbility.DREAM_SHROUD]     = 121,
+        [xi.jobAbility.BLINDSIDE]        = 147,
+        [xi.jobAbility.NIGHT_TERROR]     = 177,
+        [xi.jobAbility.PAVOR_NOCTURNUS]  = 246,
         -- Siren
         [xi.jobAbility.WELT]             =   9,
         [xi.jobAbility.ROUNDHOUSE]       =  52,
@@ -107,6 +184,18 @@ xi.job_utils.summoner.canUseBloodPact = function(player, pet, target, petAbility
         -- check if player is too far from target
         if target:checkDistance(player) >= 22 then
             return xi.msg.basic.TARG_OUT_OF_RANGE, 0
+        end
+
+        local petAction = pet:getCurrentAction()
+
+        -- check if avatar is under status effect
+        if petAction == xi.action.SLEEP or petAction == xi.action.STUN then
+            return xi.msg.basic.PET_CANNOT_DO_ACTION, 0 -- TODO: verify exact message in packet.
+        end
+
+        -- check if avatar is using a move already
+        if petAction == xi.action.PET_MOBABILITY_FINISH then
+            return xi.msg.basic.PET_CANNOT_DO_ACTION, 0 -- TODO: verify exact message in packet.
         end
 
         local baseMPCost = getBaseMPCost(player, petAbility)

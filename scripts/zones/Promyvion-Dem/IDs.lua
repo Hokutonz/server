@@ -18,22 +18,24 @@ zones[xi.zone.PROMYVION_DEM] =
         LOGIN_NUMBER                  = 7003, -- In celebration of your most recent login (login no. <number>), we have provided you with <number> points! You currently have a total of <number> points.
         MEMBERS_LEVELS_ARE_RESTRICTED = 7023, -- Your party is unable to participate because certain members' levels are restricted.
         BARRIER_WOVEN                 = 7223, -- It appears to be a barrier woven from the energy of overflowing memories...
+        NOTHING_OUT_OF_ORDINARY_MAP   = 7224, -- There is nothing out of the ordinary here.
+        EERIE_GREEN_GLOW              = 7225, -- The sphere is emitting an eerie green glow.
     },
     mob =
     {
         MEMORY_RECEPTACLES =
         {
-            [16850972] = { 1, 3, 16851277 },
-            [16851026] = { 2, 5, 16851281 },
-            [16851033] = { 2, 5, 16851282 },
-            [16851040] = { 2, 5, 16851283 },
-            [16851047] = { 2, 5, 16851284 },
-            [16851073] = { 3, 7, 16851278 },
-            [16851082] = { 3, 7, 16851279 },
-            [16851091] = { 3, 7, 16851280 },
-            [16851152] = { 4, 7, 16851285 },
-            [16851161] = { 4, 7, 16851286 },
-            [16851170] = { 4, 7, 16851287 },
+            [16850972] = { 1, 3, 16851278 },
+            [16851026] = { 2, 5, 16851282 },
+            [16851033] = { 2, 5, 16851283 },
+            [16851040] = { 2, 5, 16851284 },
+            [16851047] = { 2, 5, 16851285 },
+            [16851073] = { 3, 7, 16851279 },
+            [16851082] = { 3, 7, 16851280 },
+            [16851091] = { 3, 7, 16851281 },
+            [16851152] = { 4, 7, 16851286 },
+            [16851161] = { 4, 7, 16851287 },
+            [16851170] = { 4, 7, 16851288 },
         },
 
         SATIATOR    = 16851267,
@@ -42,22 +44,26 @@ zones[xi.zone.PROMYVION_DEM] =
     {
         MEMORY_STREAMS =
         {
-            [11]        = {  157, -4,  -82,  161, 4,  -77, { 46 } },     -- floor 1 return
-            [21]        = { -383, -4,   -2, -278, 4,    2, { 41 } },     -- floor 2 return
-            [31]        = { -160, -4,  437, -157, 4,  441, { 30 } },     -- floor 3 return
-            [32]        = {   -2, -4, -322,    2, 4, -317, { 30 } },     -- floor 3 return
-            [41]        = {  357, -4,  237,  361, 4,  242, { 34 } },     -- floor 4 return
-            [16851277]  = {  117, -4, -283,  122, 4, -277, { 30 } },     -- floor 1 MR1
-            [16851281]  = {  -83, -4,  -83,  -77, 4,  -76, { 34, 35 } }, -- floor 2 MR1
-            [16851282]  = {  -82, -4,   76,  -77, 4,   80, { 34, 35 } }, -- floor 2 MR2
-            [16851283]  = { -282, -4, -202, -277, 4, -196, { 34, 35 } }, -- floor 2 MR3
-            [16851284]  = { -361, -4,   36, -356, 4,   42, { 34, 35 } }, -- floor 2 MR4
-            [16851278]  = {   37, -4, -203,   43, 4, -198, { 32 } },     -- floor 3 MR1
-            [16851279]  = { -122, -4, -242, -116, 4, -237, { 32 } },     -- floor 3 MR2
-            [16851280]  = { -122, -4, -402, -116, 4, -396, { 32 } },     -- floor 3 MR3
-            [16851285]  = { -322, -4,  156, -316, 4,  162, { 32 } },     -- floor 3 MR4
-            [16851286]  = {  -42, -4,  317,  -37, 4,  322, { 32 } },     -- floor 3 MR5
-            [16851287]  = { -122, -4,  157, -118, 4,  163, { 32 } },     -- floor 3 MR6
+            [11]       = {  160, 3,  -80, 0, 0, 0, { 46 } }, -- Floor 1 return
+            [21]       = { -280, 3,    0, 0, 0, 0, { 41 } }, -- Floor 2 return
+            [31]       = { -160, 3,  440, 0, 0, 0, { 43 } }, -- Floor 3 (North) return
+            [32]       = {    0, 3, -320, 0, 0, 0, { 42 } }, -- Floor 3 (South) return
+            [41]       = {  360, 3,  240, 0, 0, 0, { 44 } }, -- Floor 4 return
+            -- TODO: Cleanup prmyvions. It knows where you came from and will only return the apropiate event acordingly.
+            -- Event 44 -> Return to floor 3 South
+            -- Event 45 -> Return to floor 3 North
+
+            [16851278] = {  120, 3, -280, 0, 0, 0, { 30 } }, -- Floor 1 MR
+            [16851282] = {  -80, 3,  -80, 0, 0, 0, { 36 } }, -- Floor 2 MR SE - Destination: North
+            [16851283] = {  -80, 3,   80, 0, 0, 0, { 37 } }, -- Floor 2 MR NE - Destination: South
+            [16851284] = { -280, 3, -200, 0, 0, 0, { 34 } }, -- Floor 2 MR SW - Destination: South
+            [16851285] = { -360, 3,   40, 0, 0, 0, { 35 } }, -- floor 2 MR NW - Destination: North
+            [16851279] = {   40, 3, -200, 0, 0, 0, { 31 } }, -- Floor 3 (South) MR NE
+            [16851280] = { -120, 3, -240, 0, 0, 0, { 32 } }, -- Floor 3 (South) MR NW
+            [16851281] = { -120, 3, -400, 0, 0, 0, { 33 } }, -- Floor 3 (South) MR SW
+            [16851286] = { -320, 3,  160, 0, 0, 0, { 38 } }, -- Floor 3 (North) MR SW
+            [16851287] = {  -40, 3,  320, 0, 0, 0, { 39 } }, -- Floor 3 (North) MR NE
+            [16851288] = { -120, 3,  160, 0, 0, 0, { 40 } }, -- Floor 3 (North) MR SE
         },
     },
 }

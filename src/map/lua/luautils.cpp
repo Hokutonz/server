@@ -224,6 +224,7 @@ namespace luautils
         lua.set_function("GetContainerFilenamesList", &luautils::GetContainerFilenamesList);
         lua.set_function("GetCachedInstanceScript", &luautils::GetCachedInstanceScript);
         lua.set_function("GetItemIDByName", &luautils::GetItemIDByName);
+        lua.set_function("SendItemToDeliveryBox", &luautils::SendItemToDeliveryBox);
         lua.set_function("SendLuaFuncStringToZone", &luautils::SendLuaFuncStringToZone);
         lua.set_function("RoeParseRecords", &roeutils::ParseRecords);
         lua.set_function("RoeParseTimed", &roeutils::ParseTimedSchedule);
@@ -807,6 +808,28 @@ namespace luautils
         std::string filename;
         if (PEntity->objtype == TYPE_NPC)
         {
+            // clang-format off
+            auto isNamePrintable = [](const std::string& name)
+            {
+                // Match non-printable ASCII
+                for (const char& c : name)
+                {
+                    if ((c >= 0 && c <= 0x20) || c >= 0x7F)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            };
+            // clang-format on
+
+            // Don't bother even trying to load the script if the NPC name is non printable,
+            // and therefore impossible for a filesystem to load.
+            // TODO: Change name to "0x%X" instead so non-printables could get a script?
+            if (!isNamePrintable(PEntity->getName()))
+            {
+                return;
+            }
             std::string zone_name = PEntity->loc.zone->getName();
             std::string npc_name  = PEntity->getName();
             filename              = fmt::format("./scripts/zones/{}/npcs/{}.lua", zone_name, npc_name);
@@ -849,13 +872,13 @@ namespace luautils
         // Mobs
         {
             auto query = fmt::sprintf("SELECT mobname, mobid FROM mob_spawn_points "
-                                      "WHERE ((mobid >> 12) & 0xFFF) = %i;",
+                                      "WHERE ((mobid >> 12) & 0xFFF) = %i ORDER BY mobid ASC",
                                       zoneId);
-            auto ret   = sql->Query(query.c_str());
-            while (ret != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS)
+            auto ret   = _sql->Query(query.c_str());
+            while (ret != SQL_ERROR && _sql->NumRows() != 0 && _sql->NextRow() == SQL_SUCCESS)
             {
-                auto name = sql->GetStringData(0);
-                auto id   = sql->GetUIntData(1);
+                auto name = _sql->GetStringData(0);
+                auto id   = _sql->GetUIntData(1);
 
                 lookup[name].emplace_back(id);
             }
@@ -864,13 +887,13 @@ namespace luautils
         // NPCs
         {
             auto query = fmt::sprintf("SELECT name, npcid FROM npc_list "
-                                      "WHERE ((npcid >> 12) & 0xFFF) = %i;",
+                                      "WHERE ((npcid >> 12) & 0xFFF) = %i ORDER BY npcid ASC",
                                       zoneId);
-            auto ret   = sql->Query(query.c_str());
-            while (ret != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS)
+            auto ret   = _sql->Query(query.c_str());
+            while (ret != SQL_ERROR && _sql->NumRows() != 0 && _sql->NextRow() == SQL_SUCCESS)
             {
-                auto name = sql->GetStringData(0);
-                auto id   = sql->GetUIntData(1);
+                auto name = _sql->GetStringData(0);
+                auto id   = _sql->GetUIntData(1);
 
                 lookup[name].emplace_back(id);
             }
@@ -985,10 +1008,10 @@ namespace luautils
             uint16 zoneId = 0;
             {
                 auto query = fmt::sprintf("SELECT zoneid FROM zone_settings WHERE name = '%s'", zoneName.c_str());
-                auto ret = sql->Query(query.c_str());
-                if (ret != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS)
+                auto ret = _sql->Query(query.c_str());
+                if (ret != SQL_ERROR && _sql->NumRows() != 0 && _sql->NextRow() == SQL_SUCCESS)
                 {
-                    zoneId = sql->GetUIntData(0);
+                    zoneId = _sql->GetUIntData(0);
                 }
             }
 
@@ -1708,17 +1731,19 @@ namespace luautils
     {
         TracyZoneScoped;
 
-        if (contentTag != nullptr)
+        if (contentTag == nullptr || std::strlen(contentTag) == 0)
         {
-            std::string contentVariable("ENABLE_");
-            contentVariable.append(contentTag);
+            return true;
+        }
 
-            bool contentEnabled            = settings::get<bool>(fmt::format("main.{}", contentVariable));
-            bool contentRestrictionEnabled = settings::get<bool>("main.RESTRICT_CONTENT");
-            if (!contentEnabled && contentRestrictionEnabled)
-            {
-                return false;
-            }
+        std::string contentVariable("ENABLE_");
+        contentVariable.append(contentTag);
+
+        bool contentEnabled            = settings::get<bool>(fmt::format("main.{}", contentVariable));
+        bool contentRestrictionEnabled = settings::get<bool>("main.RESTRICT_CONTENT");
+        if (!contentEnabled && contentRestrictionEnabled)
+        {
+            return false;
         }
 
         return true;
@@ -1884,6 +1909,12 @@ namespace luautils
     int32 OnTriggerAreaEnter(CCharEntity* PChar, CTriggerArea* PTriggerArea)
     {
         TracyZoneScoped;
+
+        // Do not enter trigger areas while loading in. Set in xi.player.onGameIn
+        if (PChar->GetLocalVar("ZoningIn") > 0)
+        {
+            return 0;
+        }
 
         std::string                 filename;
         std::optional<CLuaInstance> optInstance = std::nullopt;
@@ -2578,6 +2609,15 @@ namespace luautils
         if (!onItemUse.valid())
         {
             return -1;
+        }
+
+        // using an item removes invisible status effect
+        if (auto* PBattleEntity = dynamic_cast<CBattleEntity*>(PUser))
+        {
+            if (PBattleEntity->StatusEffectContainer->HasStatusEffect(EFFECT_INVISIBLE))
+            {
+                PBattleEntity->StatusEffectContainer->DelStatusEffect(EFFECT_INVISIBLE);
+            }
         }
 
         auto result = onItemUse(CLuaBaseEntity(PTarget), CLuaBaseEntity(PUser), CLuaItem(PItem));
@@ -4989,10 +5029,10 @@ namespace luautils
         if (PMob != nullptr)
         {
             int32 r   = 0;
-            int32 ret = sql->Query("SELECT count(mobid) FROM `nm_spawn_points` where mobid=%u", mobid);
-            if (ret != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS && sql->GetUIntData(0) > 0)
+            int32 ret = _sql->Query("SELECT count(mobid) FROM `nm_spawn_points` where mobid=%u", mobid);
+            if (ret != SQL_ERROR && _sql->NumRows() != 0 && _sql->NextRow() == SQL_SUCCESS && _sql->GetUIntData(0) > 0)
             {
-                r = xirand::GetRandomNumber(sql->GetUIntData(0));
+                r = xirand::GetRandomNumber(_sql->GetUIntData(0));
             }
             else
             {
@@ -5000,13 +5040,13 @@ namespace luautils
                 return;
             }
 
-            ret = sql->Query("SELECT pos_x, pos_y, pos_z FROM `nm_spawn_points` WHERE mobid=%u AND pos=%i", mobid, r);
-            if (ret != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS)
+            ret = _sql->Query("SELECT pos_x, pos_y, pos_z FROM `nm_spawn_points` WHERE mobid=%u AND pos=%i", mobid, r);
+            if (ret != SQL_ERROR && _sql->NumRows() != 0 && _sql->NextRow() == SQL_SUCCESS)
             {
                 PMob->m_SpawnPoint.rotation = xirand::GetRandomNumber(256);
-                PMob->m_SpawnPoint.x        = sql->GetFloatData(0);
-                PMob->m_SpawnPoint.y        = sql->GetFloatData(1);
-                PMob->m_SpawnPoint.z        = sql->GetFloatData(2);
+                PMob->m_SpawnPoint.x        = _sql->GetFloatData(0);
+                PMob->m_SpawnPoint.y        = _sql->GetFloatData(1);
+                PMob->m_SpawnPoint.z        = _sql->GetFloatData(2);
                 // ShowDebug(CL_RED"UpdateNMSpawnPoint: After %i - %f, %f, %f, %i", r,
                 // PMob->m_SpawnPoint.x,PMob->m_SpawnPoint.y,PMob->m_SpawnPoint.z,PMob->m_SpawnPoint.rotation);
             }
@@ -5350,10 +5390,10 @@ namespace luautils
         TracyZoneScoped;
 
         uint16 effectId = 0;
-        int32  ret      = sql->Query("SELECT effectId FROM despoil_effects WHERE itemId = %u", itemId);
-        if (ret != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS)
+        int32  ret      = _sql->Query("SELECT effectId FROM despoil_effects WHERE itemId = %u", itemId);
+        if (ret != SQL_ERROR && _sql->NumRows() != 0 && _sql->NextRow() == SQL_SUCCESS)
         {
-            effectId = (uint16)sql->GetUIntData(0);
+            effectId = (uint16)_sql->GetUIntData(0);
         }
 
         return effectId;
@@ -5581,23 +5621,101 @@ namespace luautils
         customMenuContext.erase(PChar->id);
     }
 
+    SendToDBoxReturnCode SendItemToDeliveryBox(std::string const& playerName, uint16 itemId, uint32 quantity, std::string senderText)
+    {
+        const char* getPlayerIDQuery = "SELECT charid FROM chars WHERE charname = '%s'";
+        int32       queryRet         = _sql->Query(getPlayerIDQuery, playerName);
+        uint32      playerID         = 0;
+
+        if (queryRet != SQL_ERROR && _sql->NumRows() != 0 && _sql->NextRow() == SQL_SUCCESS)
+        {
+            playerID = _sql->GetIntData(0);
+        }
+        else
+        {
+            return SendToDBoxReturnCode::PLAYER_NOT_FOUND;
+        }
+
+        auto isGil = itemId == 65535;
+
+        // Check to confirm that the item legitimately exists
+        // exclude gil as gil does not have an item pointer
+        auto* PItem = itemutils::GetItemPointer(itemId);
+        if (PItem == nullptr && !isGil)
+        {
+            return SendToDBoxReturnCode::ITEM_NOT_FOUND;
+        }
+
+        // default stack size of gil
+        uint32 stackSize = 999999999;
+        // if not gil then get the actual stack size
+        if (!isGil)
+        {
+            stackSize = PItem->getStackSize();
+        }
+
+        bool quantityMoreThanStackSize = quantity > stackSize;
+
+        // limit the quantity to the stack size of the item
+        quantity = std::clamp<uint32>(quantity, 1, stackSize);
+
+        bool isAutoCommitOn = _sql->GetAutoCommit();
+
+        if (_sql->SetAutoCommit(false) && _sql->TransactionStart())
+        {
+            const char* Query = "INSERT INTO delivery_box (charid, box, itemid, quantity, senderid, sender) VALUES ("
+                                "%u, "     // Player ID
+                                "1, "      // Box ID == 1
+                                "%u, "     // Item ID
+                                "%u, "     // Quantity
+                                "%u, "     // Sender ID ( =Player ID )
+                                "'%s'); "; // Sender Text
+            int32 ret = _sql->Query(Query, playerID, itemId, quantity, playerID, senderText);
+
+            if (ret == SQL_ERROR)
+            {
+                _sql->TransactionRollback();
+                _sql->SetAutoCommit(isAutoCommitOn);
+                return SendToDBoxReturnCode::QUERY_ERROR;
+            }
+            else
+            {
+                _sql->TransactionCommit();
+                _sql->SetAutoCommit(isAutoCommitOn);
+            }
+
+            if (quantityMoreThanStackSize)
+            {
+                return SendToDBoxReturnCode::SUCCESS_LIMITED_TO_STACK_SIZE;
+            }
+            else
+            {
+                return SendToDBoxReturnCode::SUCCESS;
+            }
+        }
+        else
+        {
+            return SendToDBoxReturnCode::QUERY_ERROR;
+        }
+    }
+
     uint16 GetItemIDByName(std::string const& name)
     {
         uint16      id    = 0;
-        const char* Query = "SELECT itemid FROM item_basic WHERE name LIKE '%s' OR sortname LIKE '%s';";
-        int32       ret   = sql->Query(Query, name, name);
+        const char* Query = "SELECT itemid FROM item_basic WHERE name LIKE '%s' OR sortname LIKE '%s'";
+        int32       ret   = _sql->Query(Query, name, name);
 
-        if (ret != SQL_ERROR && sql->NumRows() == 1) // Found a single result
+        if (ret != SQL_ERROR && _sql->NumRows() == 1) // Found a single result
         {
-            while (sql->NextRow() == SQL_SUCCESS)
+            while (_sql->NextRow() == SQL_SUCCESS)
             {
-                id = sql->GetIntData(0);
+                id = _sql->GetIntData(0);
             }
         }
-        else if (ret != SQL_ERROR && sql->NumRows() > 1)
+        else if (ret != SQL_ERROR && _sql->NumRows() > 1)
         {
             // 0xFFFF is gil, so we will always return a value less than that as a warning
-            id = 0xFFFF - sql->NumRows() + 1;
+            id = 0xFFFF - _sql->NumRows() + 1;
         }
 
         return id;
