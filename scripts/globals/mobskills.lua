@@ -230,6 +230,11 @@ xi.mobskills.mobPhysicalMove = function(mob, target, skill, numHits, accMod, dmg
         finaldmg   = 0
         hitslanded = 0
         skill:setMsg(xi.msg.basic.SKILL_MISS)
+    -- calculate tp return of mob skill and add if hit primary target
+    elseif skill:getPrimaryTargetID() == target:getID() then
+        local tpReturn = xi.combat.tp.getSingleMeleeHitTPReturn(mob, target)
+        tpReturn = tpReturn + 10 * (hitslanded - 1) -- extra hits give 10 TP each
+        mob:addTP(tpReturn)
     end
 
     returninfo.dmg        = finaldmg
@@ -283,19 +288,33 @@ xi.mobskills.mobMagicalMove = function(mob, target, skill, damage, element, dmgm
     local finaldmg = damage * mab * dmgmod
 
     -- get resistance
-    local avatarAccBonus = 0
+    local petAccBonus = 0
     if mob:isPet() and mob:getMaster() ~= nil then
         local master = mob:getMaster()
         if mob:isAvatar() then
-            avatarAccBonus = utils.clamp(master:getSkillLevel(xi.skill.SUMMONING_MAGIC) - master:getMaxSkillLevel(mob:getMainLvl(), xi.job.SMN, xi.skill.SUMMONING_MAGIC), 0, 200)
+            petAccBonus = utils.clamp(master:getSkillLevel(xi.skill.SUMMONING_MAGIC) - master:getMaxSkillLevel(mob:getMainLvl(), xi.job.SMN, xi.skill.SUMMONING_MAGIC), 0, 200)
+        end
+
+        local skillchainTier, _ = xi.magicburst.formMagicBurst(element, target)
+        if
+            mob:getPetID() > 0 and
+            skillchainTier > 0
+        then
+            petAccBonus = petAccBonus + 25
         end
     end
 
-    local resist       = xi.mobskills.applyPlayerResistance(mob, nil, target, mob:getStat(xi.mod.INT)-target:getStat(xi.mod.INT), avatarAccBonus, element)
+    local resist       = xi.mobskills.applyPlayerResistance(mob, nil, target, mob:getStat(xi.mod.INT)-target:getStat(xi.mod.INT), petAccBonus, element)
     local magicDefense = getElementalDamageReduction(target, element)
 
     finaldmg       = finaldmg * resist * magicDefense
     returninfo.dmg = finaldmg
+
+    -- magical mob skills are single hit so provide single Melee hit TP return if primary target
+    if finaldmg > 0 and skill:getPrimaryTargetID() == target:getID() then
+        local tpReturn = xi.combat.tp.getSingleMeleeHitTPReturn(mob, target)
+        mob:addTP(tpReturn)
+    end
 
     return returninfo
 end
@@ -321,12 +340,12 @@ xi.mobskills.applyPlayerResistance = function(mob, effect, target, diff, bonus, 
         percentBonus = percentBonus - xi.magic.getEffectResistance(target, effect)
     end
 
-    local p = getMagicHitRate(mob, target, 0, element, percentBonus, magicaccbonus)
+    local magicHitRate = getMagicHitRate(mob, target, 0, element, percentBonus, magicaccbonus)
 
-    return getMagicResist(p)
+    return getMagicResist(mob, target, xi.skill.NONE, element, magicHitRate)
 end
 
-xi.mobskills.mobAddBonuses = function(caster, target, dmg, ele) -- used for SMN magical bloodpacts, despite the name.
+xi.mobskills.mobAddBonuses = function(caster, target, dmg, ele, skill) -- used for SMN magical bloodpacts, despite the name.
     local magicDefense = getElementalDamageReduction(target, ele)
     dmg = math.floor(dmg * magicDefense)
 
@@ -364,6 +383,14 @@ xi.mobskills.mobAddBonuses = function(caster, target, dmg, ele) -- used for SMN 
     dmg             = math.floor(dmg * dayWeatherBonus)
 
     local burst = calculateMobMagicBurst(caster, ele, target)
+    if
+        skill and
+        burst > 1.0 and
+        caster:getPetID() > 0 -- all pets except charmed pets can get magic burst message, but only with petskill action
+    then
+        skill:setMsg(xi.msg.basic.JA_MAGIC_BURST)
+    end
+
     dmg         = math.floor(dmg * burst)
 
     local mdefBarBonus = 0
@@ -392,7 +419,7 @@ end
 -- base is calculated from main level to create a minimum
 -- Equation: (HP * percent) + (LVL / base)
 -- cap is optional, defines a maximum damage
-xi.mobskills.mobBreathMove = function(mob, target, percent, base, element, cap)
+xi.mobskills.mobBreathMove = function(mob, target, skill, percent, base, element, cap)
     local damage = (mob:getHP() * percent) + (mob:getMainLvl() / base)
 
     if not cap then
@@ -441,6 +468,12 @@ xi.mobskills.mobBreathMove = function(mob, target, percent, base, element, cap)
         damage = utils.clamp(utils.stoneskin(target, damage), -99999, 99999)
     end
 
+    -- breath mob skills are single hit so provide single Melee hit TP return if primary target
+    if damage > 0 and skill:getPrimaryTargetID() == target:getID() then
+        local tpReturn = xi.combat.tp.getSingleMeleeHitTPReturn(mob, target)
+        mob:addTP(tpReturn)
+    end
+
     return damage
 end
 
@@ -468,7 +501,13 @@ xi.mobskills.mobFinalAdjustments = function(dmg, mob, skill, target, attackType,
 
     -- set message to damage
     -- this is for AoE because its only set once
-    skill:setMsg(xi.msg.basic.DAMAGE)
+    if mob:getCurrentAction() == xi.action.PET_MOBABILITY_FINISH then
+        if skill:getMsg() ~= xi.msg.basic.JA_MAGIC_BURST then
+            skill:setMsg(xi.msg.basic.USES_JA_TAKE_DAMAGE)
+        end
+    else
+        skill:setMsg(xi.msg.basic.DAMAGE)
+    end
 
     --Handle shadows depending on shadow behaviour / attackType
     if
@@ -664,7 +703,7 @@ xi.mobskills.mobDrainStatusEffectMove = function(mob, target)
 end
 
 -- Adds a status effect to a target
-xi.mobskills.mobStatusEffectMove = function(mob, target, typeEffect, power, tick, duration)
+xi.mobskills.mobStatusEffectMove = function(mob, target, typeEffect, power, tick, duration, subType, subPower, tier)
     if target:canGainStatusEffect(typeEffect, power) then
         local statmod = xi.mod.INT
         local element = mob:getStatusEffectElement(typeEffect)
@@ -672,7 +711,7 @@ xi.mobskills.mobStatusEffectMove = function(mob, target, typeEffect, power, tick
 
         if resist >= 0.25 then
             local totalDuration = utils.clamp(duration * resist, 1)
-            target:addStatusEffect(typeEffect, power, tick, totalDuration)
+            target:addStatusEffect(typeEffect, power, tick, totalDuration, subType, subPower, tier)
 
             return xi.msg.basic.SKILL_ENFEEB_IS
         end

@@ -24,6 +24,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/
 #include "ai/ai_container.h"
 #include "ai/helpers/targetfind.h"
 #include "ai/states/ability_state.h"
+#include "ai/states/inactive_state.h"
 #include "ai/states/magic_state.h"
 #include "ai/states/weaponskill_state.h"
 #include "common/utils.h"
@@ -108,7 +109,7 @@ bool CMobController::CanPursueTarget(CBattleEntity* PTarget)
         if (!PMob->PAI->PathFind->InWater() && PTarget && !PTarget->StatusEffectContainer->HasStatusEffect(EFFECT_DEODORIZE))
         {
             // certain weather / deodorize will turn on time deaggro
-            return PMob->m_disableScent;
+            return !PMob->m_disableScent;
         }
     }
     return false;
@@ -119,7 +120,7 @@ bool CMobController::CheckHide(CBattleEntity* PTarget)
     TracyZoneScoped;
     if (PTarget && PTarget->GetMJob() == JOB_THF && PTarget->StatusEffectContainer->HasStatusEffect(EFFECT_HIDE))
     {
-        return !CanPursueTarget(PTarget) && !PMob->m_TrueDetection;
+        return !CanPursueTarget(PTarget) && !PMob->m_TrueDetection && !(PMob->getMobMod(MOBMOD_DETECTION) & DETECT_HEARING);
     }
     return false;
 }
@@ -183,7 +184,18 @@ void CMobController::TryLink()
     {
         if (PTarget->PPet->objtype == TYPE_PET && ((CPetEntity*)PTarget->PPet)->getPetType() == PET_TYPE::AVATAR)
         {
-            petutils::AttackTarget(PTarget, PMob);
+            if (PTarget->objtype == TYPE_PC)
+            {
+                auto* PChar = dynamic_cast<CCharEntity*>(PTarget);
+                if (PChar && PChar->IsMobOwner(PMob))
+                {
+                    petutils::AttackTarget(PTarget, PMob);
+                }
+            }
+            else
+            {
+                petutils::AttackTarget(PTarget, PMob);
+            }
         }
     }
 
@@ -199,7 +211,9 @@ void CMobController::TryLink()
         for (auto& member : PMob->PParty->members)
         {
             CMobEntity* PPartyMember = dynamic_cast<CMobEntity*>(member);
-            if (!PPartyMember)
+            // Note if the mob to link with this one is a pet then do not link
+            // Pets only link with their masters
+            if (!PPartyMember || (PPartyMember && PPartyMember->PMaster))
             {
                 continue;
             }
@@ -211,7 +225,7 @@ void CMobController::TryLink()
                 if (PPartyMember->m_roamFlags & ROAMFLAG_IGNORE)
                 {
                     // force into attack action
-                    // #TODO
+                    // TODO
                     PPartyMember->PAI->Engage(PTarget->targid);
                 }
             }
@@ -479,7 +493,7 @@ bool CMobController::CanCastSpells()
     // smn can only cast spells if it has no pet
     if (PMob->GetMJob() == JOB_SMN)
     {
-        if (PMob->PPet == nullptr || !PMob->PPet->isDead())
+        if (PMob->PPet && !PMob->PPet->isDead())
         {
             return false;
         }
@@ -575,12 +589,15 @@ void CMobController::DoCombatTick(time_point tick)
         PMob->PAI->EventHandler.triggerListener("COMBAT_TICK", CLuaBaseEntity(PMob));
         luautils::OnMobFight(PMob, PTarget);
 
-        // Try to spellcast (this is done first so things like Chainspell spam is prioritised over TP moves etc.
-        if (IsSpecialSkillReady(currentDistance) && TrySpecialSkill())
+        if (PMob->PAI->IsCurrentState<CInactiveState>())
         {
             return;
         }
-        else if (IsSpellReady(currentDistance) && TryCastSpell())
+        else if (IsSpecialSkillReady(currentDistance) && TrySpecialSkill())
+        {
+            return;
+        }
+        else if (IsSpellReady(currentDistance) && TryCastSpell()) // Try to spellcast (this is done first so things like Chainspell spam is prioritised over TP moves etc.
         {
             return;
         }
@@ -679,7 +696,7 @@ void CMobController::Move()
 
         if (((currentDistance > closeDistance) || move) && PMob->PAI->CanFollowPath())
         {
-            // #TODO: can this be moved to scripts entirely?
+            // TODO: can this be moved to scripts entirely?
             if (PMob->getMobMod(MOBMOD_DRAW_IN) > 0)
             {
                 if (currentDistance >= PMob->GetMeleeRange() * 2 && battleutils::DrawIn(PTarget, PMob, PMob->GetMeleeRange() - 0.2f))
@@ -831,7 +848,7 @@ void CMobController::DoRoamTick(time_point tick)
 
         return;
     }
-    // #TODO
+    // TODO
     else if (PMob->GetDespawnTime() > time_point::min() && PMob->GetDespawnTime() < m_Tick)
     {
         Despawn();
@@ -890,9 +907,13 @@ void CMobController::DoRoamTick(time_point tick)
             // if I just disengaged check if I should despawn
             if (!PMob->getMobMod(MOBMOD_DONT_ROAM_HOME) && PMob->IsFarFromHome())
             {
-                if (PMob->CanRoamHome() && PMob->PAI->PathFind->PathTo(PMob->m_SpawnPoint))
+                if (PMob->CanRoamHome())
                 {
                     // walk back to spawn if too far away
+                    if (!PMob->PAI->PathFind->IsFollowingPath() && !PMob->PAI->PathFind->PathTo(PMob->m_SpawnPoint))
+                    {
+                        PMob->PAI->PathFind->PathInRange(PMob->m_SpawnPoint, PMob->m_maxRoamDistance, PATHFLAG_RUN | PATHFLAG_WALLHACK);
+                    }
 
                     // limit total path to just 10 or
                     // else we'll move straight back to spawn
@@ -946,7 +967,7 @@ void CMobController::DoRoamTick(time_point tick)
                 else if (PMob->CanRoam() && PMob->PAI->PathFind->RoamAround(PMob->m_SpawnPoint, PMob->GetRoamDistance(),
                                                                             (uint8)PMob->getMobMod(MOBMOD_ROAM_TURNS), PMob->m_roamFlags))
                 {
-                    // #TODO: #AIToScript (event probably)
+                    // TODO: #AIToScript (event probably)
                     if (PMob->m_roamFlags & ROAMFLAG_WORM)
                     {
                         // move down
@@ -1151,6 +1172,17 @@ bool CMobController::CanAggroTarget(CBattleEntity* PTarget)
         if (PMob->getMobMod(MOBMOD_NO_AGGRO) > 0)
         {
             return false;
+        }
+
+        // Do not aggro if a normal CoP Fomor and the player has low enough fomor hate
+        if (PMob->m_Family == 115 && !(PMob->m_Type & MOBTYPE_NOTORIOUS) &&
+            (PMob->getZone() >= ZONE_LUFAISE_MEADOWS && PMob->getZone() <= ZONE_SACRARIUM) &&
+            PTarget->objtype == TYPE_PC)
+        {
+            if (static_cast<CCharEntity*>(PTarget)->getCharVar("FOMOR_HATE") < 8)
+            {
+                return false;
+            }
         }
 
         // Don't aggro I'm an underground worm
