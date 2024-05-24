@@ -34,6 +34,7 @@ local zoneList =
     { 0x14, 0x1E, xi.zone.MHAURA},
     { 0x14, 0x09, xi.zone.NORG},
     { 0x14, 0x29, xi.zone.KAZHAM},
+    { 0x14, 0xBB, xi.zone.AL_ZAHBI},
     { 0x14, 0xBC, xi.zone.AHT_URHGAN_WHITEGATE},
 }
 
@@ -87,7 +88,7 @@ commandObj.onTrigger = function(player, bytes)
 			end
 		end
 		if zone == nil then
-			error(player, 'That is a invalid zone.')
+			error(player, 'Auto-translated phrase is not a zone.')
 			return
 		end
 	else
@@ -109,19 +110,23 @@ commandObj.onTrigger = function(player, bytes)
 		end
 	end
 
-	-- Check if player's health is full
-	if player:getHP() ~= player:getMaxHP() then
-		error(player, 'You must be at full health to use this command.')
-		return
-	end
+    if player:hasEnmity() then
+    player:printToPlayer('You cant use this command when you have Enmity.')
+  return
+end
 	
-	-- Added check
-	if zone == xi.zone.AHT_URHGAN_WHITEGATE and not player:hasKeyItem(xi.ki.BOARDING_PERMIT) then
-		error(player, 'You need a Boarding Permit to access this zone.')
-		return
-	end
+	-- Check if the player is trying to teleport to Aht Urhgan Whitegate or Al Zahbi
+        if (zone == xi.zone.AHT_URHGAN_WHITEGATE or zone == xi.zone.AL_ZAHBI) and not player:hasKeyItem(xi.ki.BOARDING_PERMIT) then
+            error(player, 'You need a Boarding Permit to access this zone.')
+            return
+        end
 
-	player:setPos(x, y, z, rot, zone)
+	player:injectActionPacket(player:getID(), 5, 235, 0, 0, 0, 10, 1)
+
+player:timer(2000, function()
+player:setPos(x, y, z, rot, zone)
+end)
+
 end
 
 return commandObj

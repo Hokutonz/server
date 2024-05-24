@@ -12,7 +12,7 @@ commandObj.cmdprops =
 
 commandObj.onTrigger = function(player,page)
     if (page == 0 or page == nil) then
-        player:printToPlayer( '1: Crystal Shop, 2: Food Shop, 3: Pharmacy Shop, 4: Limited time Craft items')
+        player:printToPlayer( '1: Crystal Shop, 2: Food Shop, 3: Pharmacy Shop')
     elseif (page == 1) then
         local stock_1 =
         {
@@ -72,14 +72,6 @@ commandObj.onTrigger = function(player,page)
         }
         xi.shop.general(player, stock_3)
 		player:printToPlayer( 'Pharmacy Shop')
-		
-		elseif ( page == 4) then
-        local stock_4 =
-        {
-            635, 100,   -- Win. Tea Leaves
-        }
-        xi.shop.general(player, stock_4)
-		player:printToPlayer( 'Limited time Craft items')
 		
     else
         player:printToPlayer( string.format( "Page %i not found.", page ) )
