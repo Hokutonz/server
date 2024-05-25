@@ -2365,7 +2365,7 @@ namespace battleutils
             ((CMobEntity*)PDefender)->PEnmityContainer->UpdateEnmityFromDamage(PAttacker, 0);
         }
 
-        if (PAttacker->objtype == TYPE_PC && !isRanged)
+        if (PAttacker->objtype == TYPE_PC && !isRanged && !isCounter)
         {
             PAttacker->StatusEffectContainer->DelStatusEffectsByFlag(EFFECTFLAG_ATTACK);
         }
@@ -3702,6 +3702,17 @@ namespace battleutils
                 }
             }
 
+            Mod resistanceRankMods[] = { Mod::FIRE_RES_RANK, Mod::ICE_RES_RANK, Mod::WIND_RES_RANK, Mod::EARTH_RES_RANK, Mod::THUNDER_RES_RANK, Mod::ICE_RES_RANK, Mod::LIGHT_RES_RANK, Mod::DARK_RES_RANK };
+
+            // Reset any resistance rank mods on the defender
+            PDefender->delModifiers(&PSCEffect->modList);
+
+            // Reset the effects resistance rank mods
+            for (auto& resistanceRank : resistanceRankMods)
+            {
+                PSCEffect->setMod(resistanceRank, 0);
+            }
+
             if (skillchain != SC_NONE)
             {
                 PSCEffect->SetStartTime(server_clock::now());
@@ -3709,6 +3720,17 @@ namespace battleutils
                 PSCEffect->SetTier(GetSkillchainTier(skillchain));
                 PSCEffect->SetPower(skillchain);
                 PSCEffect->SetSubPower(std::min(PSCEffect->GetSubPower() + 1, 5)); // Linked, limited to 5
+
+                // Set new resistance rank modifiers
+                // https://www.bg-wiki.com/ffxi/Resist#Modifying_Resistance_Rank
+                for (auto& element : GetSkillchainMagicElement(skillchain))
+                {
+                    Mod resistanceRankMod = GetResistanceRankModFromElement(element);
+                    PSCEffect->setMod(resistanceRankMod, -1);
+                }
+
+                // Add the mods back to the player (effect cleanup will destroy the mods for us later)
+                PDefender->addModifiers(&PSCEffect->modList);
 
                 return (SUBEFFECT)GetSkillchainSubeffect(skillchain);
             }
@@ -3866,6 +3888,22 @@ namespace battleutils
         };
 
         return resonanceToElement.at(skillchain);
+    }
+
+    Mod GetResistanceRankModFromElement(ELEMENT& element)
+    {
+        static const std::unordered_map<ELEMENT, Mod> elementToMod = {
+            { ELEMENT_FIRE, Mod::FIRE_RES_RANK },
+            { ELEMENT_WATER, Mod::WATER_RES_RANK },
+            { ELEMENT_WIND, Mod::WIND_RES_RANK },
+            { ELEMENT_EARTH, Mod::EARTH_RES_RANK },
+            { ELEMENT_THUNDER, Mod::EARTH_RES_RANK },
+            { ELEMENT_ICE, Mod::ICE_RES_RANK },
+            { ELEMENT_LIGHT, Mod::LIGHT_RES_RANK },
+            { ELEMENT_DARK, Mod::DARK_RES_RANK },
+        };
+
+        return elementToMod.at(element);
     }
 
     int32 TakeSkillchainDamage(CBattleEntity* PAttacker, CBattleEntity* PDefender, int32 lastSkillDamage, CBattleEntity* taChar)
@@ -6061,7 +6099,7 @@ namespace battleutils
 
     void AddTraits(CBattleEntity* PEntity, TraitList_t* traitList, uint8 level)
     {
-        CCharEntity* PChar = PEntity->objtype == TYPE_PC ? static_cast<CCharEntity*>(PEntity) : nullptr;
+        auto* PChar = dynamic_cast<CCharEntity*>(PEntity);
 
         for (auto&& PTrait : *traitList)
         {
@@ -6436,8 +6474,10 @@ namespace battleutils
         recast = static_cast<int32>(recast * ((100.0f - (fastCastReduction + inspirationRecastReduction)) / 100.0f));
 
         // Apply Haste (Magic and Gear)
-        int32 haste = PEntity->getMod(Mod::HASTE_MAGIC) + PEntity->getMod(Mod::HASTE_GEAR);
-        recast      = static_cast<int32>(recast * ((10000.0f - haste) / 10000.0f));
+        int32 hasteMagic = std::clamp<int32>(PEntity->getMod(Mod::HASTE_MAGIC), -10000, 4375); // 43.75% cap -- handle 100% slow for weakness
+        int32 hasteGear  = std::clamp<int32>(PEntity->getMod(Mod::HASTE_GEAR), -2500, 2500);   // 25%
+        int32 haste      = hasteMagic + hasteGear;
+        recast           = static_cast<int32>(recast * ((10000.0f - haste) / 10000.0f));
 
         if (PSpell->getSpellGroup() == SPELLGROUP_SONG)
         {
